@@ -22,9 +22,9 @@ class CreateDeployment(BaseActionAliasTestCase):
         format_string = self.action_alias_db.formats[0]['representation'][0]
         format_strings = self.action_alias_db.get_format_strings()
 
-        command = "github deployment create st2contrib description A description"
+        command = "github deployment create st2 description A description"
         expected_parameters = {
-            'repository': "st2contrib",
+            'repository': "st2",
             'github_type': None,
             'ref': "master",
             'environment': "production",
@@ -42,9 +42,9 @@ class CreateDeployment(BaseActionAliasTestCase):
         format_string = self.action_alias_db.formats[0]['representation'][0]
         format_strings = self.action_alias_db.get_format_strings()
 
-        command = "github deployment create st2contrib type online ref v1.0.0 environment staging description Another description"  # NOQA
+        command = "github deployment create st2 type online ref v1.0.0 environment staging description Another description"  # NOQA
         expected_parameters = {
-            'repository': "st2contrib",
+            'repository': "st2",
             'github_type': "online",
             'ref': "v1.0.0",
             'environment': "staging",
@@ -66,9 +66,9 @@ class CreateRelease(BaseActionAliasTestCase):
         format_string = self.action_alias_db.formats[0]['representation'][0]
         format_strings = self.action_alias_db.get_format_strings()
 
-        command = "github release create st2contrib name v1.0.0 body It's a release Jim, but not as we know it!"  # NOQA
+        command = "github release create st2 name v1.0.0 body It's a release Jim, but not as we know it!"  # NOQA
         expected_parameters = {
-            'repository': "st2contrib",
+            'repository': "st2",
             'github_type': None,
             'name': "v1.0.0",
             'version_increase': None,
@@ -87,9 +87,9 @@ class CreateRelease(BaseActionAliasTestCase):
         format_string = self.action_alias_db.formats[0]['representation'][0]
         format_strings = self.action_alias_db.get_format_strings()
 
-        command = "github release create st2contrib type online version patch commit master name v1.0.0 body It's a release Jim, but not as we know it!"  # NOQA
+        command = "github release create st2 type online version patch commit master name v1.0.0 body It's a release Jim, but not as we know it!"  # NOQA
         expected_parameters = {
-            'repository': "st2contrib",
+            'repository': "st2",
             'github_type': "online",
             'version_increase': "patch",
             'target_commitish': "master",
@@ -112,9 +112,9 @@ class DeploymentStatuses(BaseActionAliasTestCase):
         format_string = self.action_alias_db.formats[0]['representation'][0]
         format_strings = self.action_alias_db.get_format_strings()
 
-        command = "github deployment statuses st2contrib id 1"
+        command = "github deployment statuses st2 id 1"
         expected_parameters = {
-            'repository': "st2contrib",
+            'repository': "st2",
             'github_type': None,
             'deployment_id': "1",
         }
@@ -130,9 +130,9 @@ class DeploymentStatuses(BaseActionAliasTestCase):
         format_string = self.action_alias_db.formats[0]['representation'][0]
         format_strings = self.action_alias_db.get_format_strings()
 
-        command = "github deployment statuses type online st2contrib id 1"
+        command = "github deployment statuses type online st2 id 1"
         expected_parameters = {
-            'repository': "st2contrib",
+            'repository': "st2",
             'github_type': "online",
             'deployment_id': "1",
         }
@@ -190,9 +190,9 @@ class LatestRelease(BaseActionAliasTestCase):
         format_string = self.action_alias_db.formats[0]['representation'][0]
         format_strings = self.action_alias_db.get_format_strings()
 
-        command = "github release latest st2contrib"
+        command = "github release latest st2"
         expected_parameters = {
-            'repository': "st2contrib",
+            'repository': "st2",
             'github_type': None
         }
 
@@ -207,9 +207,9 @@ class LatestRelease(BaseActionAliasTestCase):
         format_string = self.action_alias_db.formats[0]['representation'][0]
         format_strings = self.action_alias_db.get_format_strings()
 
-        command = "github release latest type online st2contrib"
+        command = "github release latest type online st2"
         expected_parameters = {
-            'repository': "st2contrib",
+            'repository': "st2",
             'github_type': "online"
         }
 
@@ -228,9 +228,9 @@ class ListRelease(BaseActionAliasTestCase):
         format_string = self.action_alias_db.formats[0]['representation'][0]
         format_strings = self.action_alias_db.get_format_strings()
 
-        command = "github releases list st2contrib"
+        command = "github releases list st2"
         expected_parameters = {
-            'repository': "st2contrib",
+            'repository': "st2",
             'github_type': None
         }
 
@@ -245,9 +245,9 @@ class ListRelease(BaseActionAliasTestCase):
         format_string = self.action_alias_db.formats[0]['representation'][0]
         format_strings = self.action_alias_db.get_format_strings()
 
-        command = "github releases list type online st2contrib"
+        command = "github releases list type online st2"
         expected_parameters = {
-            'repository': "st2contrib",
+            'repository': "st2",
             'github_type': "online"
         }
 

@@ -5,7 +5,7 @@ token:
   default: "{{system.github_oauth_token}}"
   required: true
 
-user: 
+user:
   description: "GitHub Username"
   type: "string"
 
@@ -52,9 +52,9 @@ deployment_environment:
 #
 #  repositories:
 #    -
-#      user: "StackStorm"
-#      name: "st2"
+#      user: "StackStorm-Exchange"
+#      name: "stackstorm-github"
 #    -
-#      user: "StackStorm"
-#      name: "st2contrib"
+#      user: "StackStorm-Exchange"
+#      name: "stackstorm-aws"
 #  count: 30  # Maximum number of old events to retrieve
