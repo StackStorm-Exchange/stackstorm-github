@@ -9,4 +9,6 @@ keywords:
 version: 0.7.0
 stackstorm_version: ">=2.1.0"
 author: StackStorm, Inc.
-email: info@stackstorm.com
+email: support@stackstorm.com
+contributors:
+  - Edward Medvedev <edward.medvedev@gmail.com>
