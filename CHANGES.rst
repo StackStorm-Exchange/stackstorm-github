@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.7.0
+
+* Work with the new pack management.
+* Support tags and commit SHAs in deployment event refs.
+
 ## v0.6.0
 
 * Add deployment event webhook.
@@ -12,7 +17,7 @@
 * Migrate config.yaml to config.schema.yaml.
 * Add actions and aliases managing releases (list, create, latest).
 * Add actions and aliases for managing deployments.
-* Add action and aliases for sorting a user scoped GitHub oauth token 
+* Add action and aliases for sorting a user scoped GitHub oauth token
   for GitHub.com and GitHub Enterprise.
 
 ## v0.4.0

@@ -11,22 +11,14 @@ parameters:
     type: "string"
     description: "The full repo path (e.g. [Org|User]/repo_name"
     required: true
-  repo_name:
-    type: "string"
-    description: "The repo name."
-    required: true
   deploy_ref:
     type: "string"
-    description: "The branch to deploy (Note: tags are not supported!)"
+    description: "The ref of the deployment (branch/tag/SHA)."
     default: "master"
   deploy_env:
     type: "string"
     description: "The environment to target."
     default: "production"
-  deploy_sha:
-    type: "string"
-    description: "The SHA of the commit to deploy."
-    required: true
   deploy_desc:
     type: "string"
     description: "The description of the deployment."
