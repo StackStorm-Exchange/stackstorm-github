@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.6.1
+
+* Add context parameter to github.add_status action
+
 ## v0.6.0
 
 * Add deployment event webhook.

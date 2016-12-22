@@ -29,3 +29,7 @@
       type: "string"
       description: "A short description of the status."
       required: false
+    context:
+      type: "string"
+      description: "A string label to differentiate this status from the status of other systems. Default: \"default\""
+      required: false
