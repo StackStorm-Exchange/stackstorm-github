@@ -6,6 +6,8 @@ keywords:
   - github
   - git
   - scm
-version : 0.6.1
+version : 0.6.2
 author : StackStorm, Inc.
 email : info@stackstorm.com
+contributors:
+  - Jon Middleton <jon.middleton@pulsant.com>
