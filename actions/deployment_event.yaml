@@ -47,4 +47,3 @@ parameters:
     type: "string"
     description: "Additional payload information from GitHub"
     default: "{}"
-    immutable: true
