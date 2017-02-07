@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.6.2
+
+* Remove `immutable: true` from deploy_payload the parameter in
+  deployment_event action.
+
 ## v0.6.1
 
 * Add context parameter to github.add_status action
