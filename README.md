@@ -122,4 +122,4 @@ command:
 - It only works for the default `github_type`.
 - If using with GitHub.com you your ST2 server needs to be contactable via the internet!
 - Deployment Statuses will be logged as the creating user in GitHub.
-- You can't currently deploy tags, due to a limitation in `packs.download`.
+- With StackStorm v2.1+ you should be able to deploy tags.
