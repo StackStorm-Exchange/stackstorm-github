@@ -33,10 +33,7 @@ github.deployment_event:
       action: packs.install
 
       input:
-        packs: [  <% $.repo_name %> ]
-        repo_url: <% $.ssh_url %>
-        branch: <% $.deploy_ref %>
-        subtree: false
+        packs: [  "<% $.ssh_url %>=<% $.deploy_ref %>" ]
 
       on-success:
         - deployment_successful
