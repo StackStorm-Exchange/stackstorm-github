@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.6.3
+
+* Update the parameters for `pack.install` as they have changed.
+
 ## v0.6.2
 
 * Remove `immutable: true` from deploy_payload the parameter in
