@@ -1,6 +1,6 @@
 ---
 name: "latest_release"
-runner_type: "run-python"
+runner_type: "python-script"
 description: "List the latest release for a GitHub repository"
 enabled: true
 entry_point: "latest_release.py"

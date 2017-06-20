@@ -1,6 +1,6 @@
 ---
   name: "add_status"
-  runner_type: "run-python"
+  runner_type: "python-script"
   description: "Add a commit status for a provided ref."
   enabled: true
   entry_point: "add_status.py"

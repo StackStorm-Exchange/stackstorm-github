@@ -1,6 +1,6 @@
 ---
 name: "list_deployments"
-runner_type: "run-python"
+runner_type: "python-script"
 description: "List deployments for a GitHub repository"
 enabled: true
 entry_point: "list_deployments.py"

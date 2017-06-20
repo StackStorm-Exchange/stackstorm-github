@@ -1,6 +1,6 @@
 ---
 name: "list_releases"
-runner_type: "run-python"
+runner_type: "python-script"
 description: "List releases for a GitHub repository"
 enabled: true
 entry_point: "list_releases.py"

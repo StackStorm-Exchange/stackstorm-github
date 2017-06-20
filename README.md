@@ -20,6 +20,10 @@ Keep in mind that even thought actions which operate on public repositories
 don't require authentication token you are still encouraged to supply one
 because unauthenticated requests have a very low rate limit.
 
+**Note** : When modifying the configuration in `/opt/stackstorm/configs/` please
+           remember to tell StackStorm to load these new values by running
+           `st2ctl reload --register-configs`
+
 ## Obtaining Authentication Token
 
 To obtain authentication token, follow the instructions on the [Creating an

@@ -1,6 +1,6 @@
 ---
 name: get_traffic_stats
-runner_type: run-python
+runner_type: python-script
 description: Retrieve traffic statistics for a given repository
 enabled: true
 entry_point: get_traffic_stats.py

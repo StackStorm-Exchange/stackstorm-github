@@ -1,6 +1,6 @@
 ---
 name: add_team_membership
-runner_type: run-python
+runner_type: python-script
 description: Add (and invite if not a member) a user to a team
 enabled: true
 entry_point: add_team_membership.py

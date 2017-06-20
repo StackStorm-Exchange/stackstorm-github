@@ -1,6 +1,6 @@
 ---
   name: "add_comment"
-  runner_type: "run-python"
+  runner_type: "python-script"
   description: "Add a comment to the provided issue / pull request."
   enabled: true
   entry_point: "add_comment.py"
