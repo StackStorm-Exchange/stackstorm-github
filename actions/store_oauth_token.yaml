@@ -1,6 +1,6 @@
 ---
 name: "store_oauth_token"
-runner_type: "run-python"
+runner_type: "python-script"
 description: "Store a users GitHub OAuth token."
 enabled: true
 entry_point: "store_oauth_token.py"

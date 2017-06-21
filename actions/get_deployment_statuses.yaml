@@ -1,6 +1,6 @@
 ---
 name: "get_deployment_statuses"
-runner_type: "run-python"
+runner_type: "python-script"
 description: "Get the statuses of a deployment for a GitHub repository"
 enabled: true
 entry_point: "get_deployment_statuses.py"

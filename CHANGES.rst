@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.7.0
+
+* Updated action `runner_type` from `run-python` to `python-script`
+
 ## v0.6.3
 
 * Update the parameters for `pack.install` as they have changed.

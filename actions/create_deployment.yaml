@@ -1,6 +1,6 @@
 ---
 name: "create_deployment"
-runner_type: "run-python"
+runner_type: "python-script"
 description: "Create a new deployment for a GitHub repository"
 enabled: true
 entry_point: "create_deployment.py"

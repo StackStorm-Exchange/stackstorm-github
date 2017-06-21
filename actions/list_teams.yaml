@@ -1,6 +1,6 @@
 ---
 name: list_teams
-runner_type: run-python
+runner_type: python-script
 description: List teams in organization
 enabled: true
 entry_point: list_teams.py

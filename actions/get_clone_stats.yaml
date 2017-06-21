@@ -1,6 +1,6 @@
 ---
 name: get_clone_stats
-runner_type: run-python
+runner_type: python-script
 description: Retrieve clone statistics for a given repository
 enabled: true
 entry_point: get_clone_stats.py
