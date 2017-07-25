@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.7.1
+
+* Update sensor to use ``base_url`` option. 
+
 ## 0.7.0
 
 * Updated action `runner_type` from `run-python` to `python-script`
