@@ -28,7 +28,9 @@ class GithubRepositorySensor(PollingSensor):
 
     def setup(self):
         # Empty string '' is not ok but None is fine. (Sigh)
-        self._client = Github(self._config.get('token', None) or None)
+        config_base_url = self._config.get('base_url', None) or None
+        config_token = self._config.get('token', None) or None
+        self._client = Github(config_token or None, base_url=config_base_url)
 
         repository_sensor = self._config.get('repository_sensor', None)
         if repository_sensor is None:
