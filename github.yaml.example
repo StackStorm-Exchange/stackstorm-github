@@ -1,0 +1,22 @@
+---
+token: "{{system.github_oauth_token}}"
+user: "Stanley"
+password: "P4ssw0rd"
+github_type: "online"
+base_url: "https://api.github.com"
+enterprise_url: ""
+deployment_environment: "production"
+repository_sensor:
+  event_type_whitelist:
+    - "IssuesEvent"
+    - "IssueCommentEvent"
+    - "ForkEvent"
+    - "WatchEvent"
+    - "ReleaseEvent"
+    - "PushEvent"
+  repositories:
+    - user: "StackStorm"
+      name: "st2"
+    - user: "StackStorm"
+      name: "st2contrib"
+  count: 30  # Maximum number of old events to retrieve

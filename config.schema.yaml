@@ -33,28 +33,40 @@ enterprise_url:
   type: "string"
 
 deployment_environment:
-  description: "The enviroment for this StackStorm server."
+  description: "The environment for this StackStorm server."
   type: "string"
   required: true
   default: "production"
 
-# You need to manually put this into your config, as it's not
-# compatible with the config schema.
-
-#repository_sensor:
-#  event_type_whitelist:
-#    - "IssuesEvent"
-#    - "IssueCommentEvent"
-#    - "ForkEvent"
-#    - "WatchEvent"
-#    - "ReleaseEvent"
-#    - "PushEvent"
-#
-#  repositories:
-#    -
-#      user: "StackStorm"
-#      name: "st2"
-#    -
-#      user: "StackStorm"
-#      name: "st2contrib"
-#  count: 30  # Maximum number of old events to retrieve
+repository_sensor:
+  description: "Sensor specific settings."
+  type: "object"
+  required: false
+  additionalProperties: false
+  properties:
+    event_type_whitelist:
+      type: "array"
+      description: "Event types to watch for, e.g. IssuesEvent, PushEvent"
+      items:
+        type: "string"
+      required: false
+    repositories:
+      description: "Repositories to monitor"
+      type: "array"
+      items:
+        type: "object"
+        required: true
+        properties:
+          user:
+            description: "GitHub user or organization name"
+            type: "string"
+            required: true
+          name:
+            description: "Repository name"
+            type: "string"
+            required: true
+    count:
+      type: "integer"
+      description: "Maximum number of old events to retrieve"
+      required: false
+      default: 30

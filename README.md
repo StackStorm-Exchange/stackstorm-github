@@ -4,6 +4,11 @@ Pack which allows integration with [Github](https://github.com/).
 
 ## Configuration
 
+Copy the example configuration in [github.yaml.example](./github.yaml.example)
+to `/opt/stackstorm/configs/github.yaml` and edit as required.
+
+It must contain:
+
 * ``token`` - Authentication token. Note: token only needs to be specified for
   actions such as ``add_comment`` and ``add_status`` which require
   authentication. If you use ``get_issue`` action only with public
@@ -16,17 +21,17 @@ Pack which allows integration with [Github](https://github.com/).
 * ``user`` - GitHub Username (only for use with ``get_traffic_stats`` and ``get_clone_stats`` actions).
 * ``password`` - GitHub Password (only for use with ``get_traffic_stats`` and ``get_clone_stats`` actions).
 
-Keep in mind that even thought actions which operate on public repositories
-don't require authentication token you are still encouraged to supply one
+Keep in mind that even though actions which operate on public repositories
+don't require an authentication token, you are still encouraged to supply one
 because unauthenticated requests have a very low rate limit.
 
 **Note** : When modifying the configuration in `/opt/stackstorm/configs/` please
            remember to tell StackStorm to load these new values by running
            `st2ctl reload --register-configs`
 
-## Obtaining Authentication Token
+## Obtaining an Authentication Token
 
-To obtain authentication token, follow the instructions on the [Creating an
+To obtain an authentication token, follow the instructions on the [Creating an
 access token for command-line use](https://help.github.com/articles/creating-an-access-token-for-command-line-use/)
 page.
 
@@ -38,7 +43,7 @@ This sensor monitors Github repository for activity and dispatches a trigger
 for each repository event.
 
 > Note that current default poll interval requires authentication because of
-GitHub [rate limiting](https://developer.github.com/v3/#rate-limiting) for
+GitHub [rate-limiting](https://developer.github.com/v3/#rate-limiting) for
 unauthenticated requests.
 
 Currently supported event types:
@@ -111,19 +116,19 @@ Then you should add a web hook in github sending deployment events to the follow
 `https://<st2-server>/api/v1/webhooks/github_deployment_event?st2-api-key=<ST2-API-KEY>`
 
 By default the enviroment is set to production, you can change this in
-your own config.yaml.
+your own `github.yaml`.
 
-You can then create a deployment via ChatOPS with the following
+You can then create a deployment via ChatOps with the following
 command:
 
 ```
 @hubot github deployment create me/my_st2_pack description Lets get the feature to production
 ```
 
-#### Limitations
+### Limitations
 
 - You need to have logged an OAuth key with StackStorm (via `github.store_oauth_token`).
 - It only works for the default `github_type`.
-- If using with GitHub.com you your ST2 server needs to be contactable via the internet!
+- If using with GitHub.com your ST2 server needs to be contactable via the internet!
 - Deployment Statuses will be logged as the creating user in GitHub.
 - With StackStorm v2.1+ you should be able to deploy tags.
