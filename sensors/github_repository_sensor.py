@@ -40,7 +40,7 @@ class GithubRepositorySensor(PollingSensor):
 
         repositories = repository_sensor.get('repositories', None)
         if not repositories:
-            raise ValueError('GithubRepositorySensor should have atleast 1 repository.')
+            raise ValueError('GithubRepositorySensor should have at least 1 repository.')
 
         for repository_dict in repositories:
             user = self._client.get_user(repository_dict['user'])
