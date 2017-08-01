@@ -5,7 +5,7 @@ token:
   default: "{{system.github_oauth_token}}"
   required: true
 
-user: 
+user:
   description: "GitHub Username"
   type: "string"
 
@@ -41,7 +41,7 @@ deployment_environment:
 repository_sensor:
   description: "Sensor specific settings."
   type: "object"
-  required: false
+  required: true
   additionalProperties: false
   properties:
     event_type_whitelist:
@@ -50,9 +50,17 @@ repository_sensor:
       items:
         type: "string"
       required: false
+      default:
+        - "IssuesEvent"
+        - "IssueCommentEvent"
+        - "ForkEvent"
+        - "WatchEvent"
+        - "ReleaseEvent"
+        - "PushEvent"
     repositories:
       description: "Repositories to monitor"
       type: "array"
+      required: true
       items:
         type: "object"
         required: true
