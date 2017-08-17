@@ -1,12 +1,12 @@
 ---
 ref: github
 name : github
-description : st2 content pack containing github integrations
+description : GitHub integration
 keywords:
   - github
   - git
   - scm
-version : 0.7.1
+version : 0.8.0
 author : StackStorm, Inc.
 email : info@stackstorm.com
 contributors:

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.8.0
+
+* Added missing repository\_sensor section to `config.schema.yaml`
+* Added example configuration
+
 ## 0.7.1
 
 * Update sensor to use ``base_url`` option. 
@@ -14,19 +19,19 @@
 
 ## v0.6.2
 
-* Remove `immutable: true` from deploy_payload the parameter in
-  deployment_event action.
+* Remove `immutable: true` from deploy\_payload the parameter in
+  deployment\_event action.
 
 ## v0.6.1
 
-* Add context parameter to github.add_status action
+* Add context parameter to github.add\_status action
 
 ## v0.6.0
 
 * Add deployment event webhook.
 * Add deployment event workflow to trigger packs.install.
-* Add new action check_deployment_env env.
-* Add deployment_environment config option.
+* Add new action check\_deployment\_env env.
+* Add deployment\_environment config option.
 
 ## v0.5.0
 
