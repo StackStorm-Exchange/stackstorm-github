@@ -41,7 +41,7 @@ deployment_environment:
 repository_sensor:
   description: "Sensor specific settings."
   type: "object"
-  required: true
+  required: false
   additionalProperties: false
   properties:
     event_type_whitelist:
