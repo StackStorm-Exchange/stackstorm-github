@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.1
+
+* Make `repository_sensor` section in config schema optional 
+
 ## 0.8.0
 
 * Added missing repository\_sensor section to `config.schema.yaml`
