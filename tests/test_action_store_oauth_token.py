@@ -52,7 +52,8 @@ class StoreOauthTokenActionTestCase(GitHubBaseActionTestCase):
         action = self.get_action_instance(self.full_config)
 
         results = action.run(user="octocat",
-                             token=" foo")
+                             token=" foo",
+                             github_type="online")
 
         self.assertEqual(results, expected)
         self.assertEqual("foo",
@@ -63,7 +64,8 @@ class StoreOauthTokenActionTestCase(GitHubBaseActionTestCase):
         action = self.get_action_instance(self.full_config)
 
         results = action.run(user="octocat",
-                             token="foo ")
+                             token="foo ",
+                             github_type="online")
 
         self.assertEqual(results, expected)
         self.assertEqual("foo",
@@ -74,7 +76,8 @@ class StoreOauthTokenActionTestCase(GitHubBaseActionTestCase):
         action = self.get_action_instance(self.full_config)
 
         results = action.run(user="octocat",
-                             token=" foo ")
+                             token=" foo ",
+                             github_type="online")
 
         self.assertEqual(results, expected)
         self.assertEqual("foo",
