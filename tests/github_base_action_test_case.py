@@ -40,6 +40,10 @@ class GitHubBaseActionTestCase(BaseActionTestCase):
     def full_config(self):
         return self._full_config
 
+    @property
+    def enterprise_config(self):
+        return self._enterprise_default_config
+
     def test_run_no_config(self):
         action = self.get_action_instance(self.full_config)
         self.assertIsInstance(action, self.action_cls)

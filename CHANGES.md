@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.2
+
+* Strip whitespace from tokens when being stored by a user (Fixes: #14).
+
 ## 0.8.1
 
 * Make `repository_sensor` section in config schema optional 

@@ -22,3 +22,17 @@ from store_oauth_token import StoreOauthTokenAction
 class StoreOauthTokenActionTestCase(GitHubBaseActionTestCase):
     __test__ = True
     action_cls = StoreOauthTokenAction
+
+    def test_run_uses_public(self):
+        action = self.get_action_instance(self.enterprise_config)
+
+        results = action.run(user="octocat", github_type="public")
+        expected = {'github_type': "online"}
+        self.assertEqual(results, expected)
+
+    def test_run_uses_enterprise(self):
+        action = self.get_action_instance(self.enterprise_config)
+
+        results = action.run(user="octocat", github_type="enterprise")
+        expected = {'github_type': "enterprise"}
+        self.assertEqual(results, expected)
