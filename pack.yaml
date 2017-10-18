@@ -4,9 +4,10 @@ name : github
 description : GitHub integration
 keywords:
   - github
+  - github enterprise
   - git
   - scm
-version : 0.8.1
+version : 0.8.2
 author : StackStorm, Inc.
 email : info@stackstorm.com
 contributors:

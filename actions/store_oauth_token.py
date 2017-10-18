@@ -28,6 +28,6 @@ class StoreOauthTokenAction(BaseGithubAction):
 
         self.action_service.set_value(
             name=value_name,
-            value=token)
+            value=token.strip())
 
         return results
