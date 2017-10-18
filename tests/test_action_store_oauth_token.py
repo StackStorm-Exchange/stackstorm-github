@@ -28,7 +28,7 @@ class StoreOauthTokenActionTestCase(GitHubBaseActionTestCase):
         action = self.get_action_instance(self.enterprise_config)
 
         results = action.run(user="octocat",
-                             token="foo"
+                             token="foo",
                              github_type="public")
 
         self.assertEqual(results, expected)
@@ -40,7 +40,7 @@ class StoreOauthTokenActionTestCase(GitHubBaseActionTestCase):
         action = self.get_action_instance(self.enterprise_config)
 
         results = action.run(user="octocat",
-                             token="foo"
+                             token="foo",
                              github_type="enterprise")
 
         self.assertEqual(results, expected)
