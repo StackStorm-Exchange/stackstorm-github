@@ -23,13 +23,13 @@ class StoreOauthTokenActionTestCase(GitHubBaseActionTestCase):
     __test__ = True
     action_cls = StoreOauthTokenAction
 
-    def test_run_uses_public(self):
+    def test_run_uses_online(self):
         expected = {'github_type': "online"}
         action = self.get_action_instance(self.enterprise_config)
 
         results = action.run(user="octocat",
                              token="foo",
-                             github_type="public")
+                             github_type="online")
 
         self.assertEqual(results, expected)
         self.assertEqual("foo",
