@@ -46,3 +46,30 @@ class StoreOauthTokenActionTestCase(GitHubBaseActionTestCase):
         self.assertEqual(results, expected)
         self.assertEqual("foo",
                          action.action_service.get_value("token_enterprise_octocat"))
+
+    def test_run_token_string_whitespace_start(self):
+        action = self.get_action_instance(self.full_config)
+
+        results = action.run(user="octocat",
+                             token=" foo")
+
+        self.assertEqual("foo",
+                         action.action_service.get_value("token_octocat"))
+
+    def test_run_token_string_whitespace_end(self):
+        action = self.get_action_instance(self.full_config)
+
+        results = action.run(user="octocat",
+                             token="foo ")
+
+        self.assertEqual("foo",
+                         action.action_service.get_value("token_octocat"))
+
+    def test_run_token_string_whitespace_both(self):
+        action = self.get_action_instance(self.full_config)
+
+        results = action.run(user="octocat",
+                             token=" foo ")
+
+        self.assertEqual("foo",
+                         action.action_service.get_value("token_octocat"))
