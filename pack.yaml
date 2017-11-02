@@ -7,6 +7,7 @@ keywords:
   - github enterprise
   - git
   - scm
+  - serverless
 version : 0.8.2
 author : StackStorm, Inc.
 email : info@stackstorm.com
