@@ -1,0 +1,23 @@
+---
+name: review_pull
+runner_type: python-script
+description: Retrieve information about a particular Github issue.
+enabled: true
+entry_point: review_pull.py
+parameters:
+  user:
+    type: "string"
+    description: "User / organization name."
+    required: true
+  repo:
+    type: "string"
+    description: "Repository name."
+    required: true
+  pull_id:
+    type: "integer"
+    description: Pull Request id
+    required: true
+  message:
+    type: "string"
+    description: Pull Request id
+    required: true
