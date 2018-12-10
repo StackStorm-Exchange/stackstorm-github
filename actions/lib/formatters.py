@@ -2,6 +2,8 @@ from st2common.util import isotime
 
 __all__ = [
     'issue_to_dict',
+    'pull_to_dict',
+    'commit_to_dict',
     'label_to_dict',
     'user_to_dict'
 ]
@@ -50,6 +52,74 @@ def issue_to_dict(issue):
     result['created_at'] = created_at
     result['closed_at'] = closed_at
     result['closed_by'] = closed_by
+    return result
+
+
+def pull_to_dict(pull):
+    result = {}
+
+    author = user_to_dict(pull.user)
+    assignee = user_to_dict(pull.assignee)
+    merged_by = user_to_dict(pull.merged_by)
+
+    index = pull.html_url.rfind("/") + 1
+
+    result['id'] = pull.id
+    result['pr_id'] = int(pull.html_url[index:])
+    result['author'] = author
+    result['assign'] = assignee
+    result['title'] = pull.title
+    result['body'] = pull.body
+    result['url'] = pull.html_url
+    result['base'] = pull.base.ref
+    result['head'] = pull.head.ref
+    result['state'] = pull.state
+    result['merged'] = pull.merged
+    result['mergeable_state'] = pull.mergeable_state
+    result['merge_commit_sha'] = pull.merge_commit_sha
+
+    if pull.labels:
+        labels = [label_to_dict(label) for label in pull.labels]
+    else:
+        labels = []
+
+    result['labels'] = labels
+
+    if pull.get_commits():
+        commits = [commit_to_dict(commit) for commit in pull.get_commits()]
+    else:
+        commits = []
+
+    result['commits'] = commits
+
+    # Note: We convert it to a serialize type (string)
+    if pull.created_at:
+        created_at = isotime.format(pull.created_at)
+    else:
+        created_at = None
+
+    if pull.closed_at:
+        closed_at = isotime.format(pull.closed_at)
+    else:
+        closed_at = None
+
+    if pull.merged_at:
+        merged_at = isotime.format(pull.merged_at)
+    else:
+        merged_at = None
+
+    result['created_at'] = created_at
+    result['closed_at'] = closed_at
+    result['merged_at'] = merged_at
+    result['merged_by'] = merged_by
+    return result
+
+
+def commit_to_dict(commit):
+    result = {}
+
+    result['sha'] = commit.sha
+
     return result
 
 
