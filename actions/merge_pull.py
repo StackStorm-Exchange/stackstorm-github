@@ -1,5 +1,4 @@
 from lib.base import BaseGithubAction
-from lib.formatters import pull_to_dict
 
 __all__ = [
     'MergePullAction'
@@ -14,11 +13,11 @@ class MergePullAction(BaseGithubAction):
         pull = repo.get_pull(pull_id)
 
         if pull.mergeable:
-          return (False,'Pull Request is not mergeable')
+            return (False, 'Pull Request is not mergeable')
         if pull.merged:
-          return (False,'Pull Request is already merged')
+            return (False, 'Pull Request is already merged')
 
         status = pull.merge()
-        
-        result = { 'merged': status.merged, 'message': status.message }
+
+        result = {'merged': status.merged, 'message': status.message}
         return result
