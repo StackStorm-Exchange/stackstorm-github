@@ -1,4 +1,3 @@
-import datetime
 import re
 
 from lib.base import BaseGithubAction
@@ -40,7 +39,7 @@ class ListPullsAction(BaseGithubAction):
         for index, pull in enumerate(pulls):
             pull = pull_to_dict(pull=pull)
             if filter:
-                if re.search(pattern,pull[filter['key']]):
+                if re.search(pattern, pull[filter['key']]):
                     result.append(pull)
                     if (index + 1) >= limit:
                         break
