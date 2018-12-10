@@ -1,0 +1,19 @@
+---
+name: merge_pull
+runner_type: python-script
+description: Merge a pull request.
+enabled: true
+entry_point: merge_pull.py
+parameters:
+  user:
+    type: "string"
+    description: "User / organization name."
+    required: true
+  repo:
+    type: "string"
+    description: "Repository name."
+    required: true
+  pull_id:
+    type: "integer"
+    description: Pull Request id
+    required: true
