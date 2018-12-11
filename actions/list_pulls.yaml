@@ -35,7 +35,7 @@ parameters:
     required: false
   limit:
     type: "number"
-    description: "Maximum number of issues to return."
+    description: "Maximum number of PR to return."
     required: false
     default: 20
   filter:
