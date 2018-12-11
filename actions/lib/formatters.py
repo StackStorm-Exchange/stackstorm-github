@@ -1,3 +1,5 @@
+import re
+
 from st2common.util import isotime
 
 __all__ = [
@@ -62,10 +64,9 @@ def pull_to_dict(pull):
     assignee = user_to_dict(pull.assignee)
     merged_by = user_to_dict(pull.merged_by)
 
-    index = pull.html_url.rfind("/") + 1
 
     result['id'] = pull.id
-    result['pr_id'] = int(pull.html_url[index:])
+    result['pr_id'] = int(re.sub(r'.*/([0-9]+)(#.*)?',r'\1',pull.html_url))
     result['author'] = author
     result['assign'] = assignee
     result['title'] = pull.title
@@ -117,9 +118,7 @@ def pull_to_dict(pull):
 
 def commit_to_dict(commit):
     result = {}
-
     result['sha'] = commit.sha
-
     return result
 
 
@@ -129,7 +128,6 @@ def label_to_dict(label):
     result['name'] = label.name
     result['color'] = label.color
     result['url'] = label.url
-
     return result
 
 
