@@ -1,0 +1,31 @@
+---
+name: review_pull
+runner_type: python-script
+description: Review a Github pull request given its PR id.
+enabled: true
+entry_point: review_pull.py
+parameters:
+  user:
+    type: "string"
+    description: "User / organization name."
+    required: true
+  repo:
+    type: "string"
+    description: "Repository name."
+    required: true
+  pull_id:
+    type: "integer"
+    description: Pull Request id
+    required: true
+  message:
+    type: "string"
+    description: Pull request review message
+    required: true
+  event:
+    type: "string"
+    description: The review action you want to perform
+    enum:
+      - "APPROVE"
+      - "REQUEST_CHANGES"
+      - "COMMENT"
+    default: "APPROVE"

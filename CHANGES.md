@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.3
+
+* Added pull request list/review/merge actions
+
 ## 0.8.2
 
 * Strip whitespace from tokens when being stored by a user (Fixes: #14).

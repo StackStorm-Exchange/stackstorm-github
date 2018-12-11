@@ -1,0 +1,57 @@
+---
+name: list_pulls
+runner_type: python-script
+description: Retrieve a list of pull requests for a particular repository.
+enabled: true
+entry_point: list_pulls.py
+parameters:
+  user:
+    type: "string"
+    description: "User / organization name."
+    required: true
+  repo:
+    type: "string"
+    description: "Repository name."
+    required: true
+  state:
+    type: "string"
+    description: "State to filter on."
+    required: false
+  sort:
+    type: "string"
+    description: "Field to sort on."
+    required: false
+  direction:
+    type: "string"
+    description: "Sort direction (e.g. asc / desc)."
+    required: false
+  base:
+    type: "string"
+    description: "Filter based on the base branch name"
+    required: false
+  head:
+    type: "string"
+    description: "Filter based on the head branch name"
+    required: false
+  limit:
+    type: "number"
+    description: "Maximum number of PR to return."
+    required: false
+    default: 20
+  filter:
+    type: "object"
+    required: false
+    description: "Filter expression."
+    properties:
+      key:
+        type: "string"
+        required: true
+        description: "The key to filter on"
+        enum:
+          - "title"
+          - "author"
+          - "url"
+      pattern:
+        type: "string"
+        required: true
+        description: "The pattern to filter with"
