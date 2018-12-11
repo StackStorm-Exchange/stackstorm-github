@@ -21,3 +21,11 @@ parameters:
     type: "string"
     description: Pull request review message
     required: true
+  event:
+    type: "string"
+    description: The review action you want to perform
+    enum:
+      - "APPROVE"
+      - "REQUEST_CHANGES"
+      - "COMMENT"
+    default: "APPROVE"
