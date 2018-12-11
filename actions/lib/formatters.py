@@ -64,9 +64,8 @@ def pull_to_dict(pull):
     assignee = user_to_dict(pull.assignee)
     merged_by = user_to_dict(pull.merged_by)
 
-
     result['id'] = pull.id
-    result['pr_id'] = int(re.sub(r'.*/([0-9]+)(#.*)?',r'\1',pull.html_url))
+    result['pr_id'] = int(re.sub(r'.*/([0-9]+)(#.*)?', r'\1', pull.html_url))
     result['author'] = author
     result['assign'] = assignee
     result['title'] = pull.title
