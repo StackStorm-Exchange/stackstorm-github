@@ -1,7 +1,7 @@
 ---
 name: review_pull
 runner_type: python-script
-description: Retrieve information about a particular Github issue.
+description: Review a Github pull request given its PR id.
 enabled: true
 entry_point: review_pull.py
 parameters:
@@ -19,5 +19,5 @@ parameters:
     required: true
   message:
     type: "string"
-    description: Pull Request id
+    description: Pull request review message
     required: true
