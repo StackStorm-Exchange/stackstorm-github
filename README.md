@@ -100,6 +100,9 @@ StackStorm webhook handler.
 * ``get_issue`` - Retrieve information about a particular issue. Note: You
   only need to specify authentication token in the config if you use this
   action with a private repository.
+* ``list_pulls`` - List all pull requests for a particular repo.
+* ``review_pull`` - Create a review for the provided pull request.
+* ``merge_pull`` - Merge the provided pull request.
 
 ## Rules
 
