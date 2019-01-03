@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.4
+
+* Version bump to fix tagging issues, no code changes
+
 ## 0.8.3
 
 * Added pull request list/review/merge actions
