@@ -119,7 +119,7 @@ class BaseGithubAction(Action):
             raise Exception(
                 "ERROR: '{}'ing to '{}' - status code: {} payload: {}".format(
                     method, url, r.status_code, json.dumps(payload)))
-        except requests.exceptions.ConnectionError, e:
+        except requests.exceptions.ConnectionError as e:
             raise Exception("Could not connect to: {} : {}".format(url, e))
         else:
             if r.status_code == 204:
