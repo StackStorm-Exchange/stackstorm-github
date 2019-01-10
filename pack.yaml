@@ -9,6 +9,9 @@ keywords:
   - scm
   - serverless
 version : 0.8.4
+python_versions:
+  # It looks like bs4 library doesn't support Python 3
+  - "2"
 author : StackStorm, Inc.
 email : info@stackstorm.com
 contributors:
