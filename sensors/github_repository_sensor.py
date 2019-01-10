@@ -1,3 +1,4 @@
+import six
 import eventlet
 from github import Github
 
@@ -65,7 +66,7 @@ class GithubRepositorySensor(PollingSensor):
         :param repository: Repository object.
         :type repository: :class:`Repository`
         """
-        assert(isinstance(name, basestring))
+        assert(isinstance(name, six.text_type))
 
         # Assume a default value of 30. Better for the sensor to operate with some
         # default value in this case rather than raise an exception.
