@@ -22,11 +22,12 @@ class BaseGithubAction(Action):
         super(BaseGithubAction, self).__init__(config=config)
         token = self.config.get('token', None)
         self.token = token or None
-        self.github_url = self.config.get('github_url', DEFAULT_API_URL)
-        self.enterprise_url = self.config.get('enterprise_url', None)
+        self.web_url = self.config.get('web_url', DEFAULT_WEB_URL)
+        self.base_url = self.config.get('base_url', DEFAULT_API_URL)
+
         self.default_github_type = self.config.get('github_type', None)
 
-        self._client = Github(self.token, base_url=self.github_url)
+        self._client = Github(self.token, base_url=self.base_url)
         self._session = requests.Session()
 
     def _web_session(self):

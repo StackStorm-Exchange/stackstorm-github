@@ -3,8 +3,8 @@ token: "{{system.github_oauth_token}}"
 user: "Stanley"
 password: "P4ssw0rd"
 github_type: "online"
+web_url: "https://github.com"
 base_url: "https://api.github.com"
-enterprise_url: ""
 deployment_environment: "production"
 repository_sensor:
   event_type_whitelist:
