@@ -14,6 +14,10 @@ eventlet.monkey_patch(
 DATE_FORMAT_STRING = '%Y-%m-%d %H:%M:%S'
 
 
+# Default Github API url
+DEFAULT_API_URL = 'https://api.github.com'
+
+
 class GithubRepositorySensor(PollingSensor):
     def __init__(self, sensor_service, config=None, poll_interval=None):
         super(GithubRepositorySensor, self).__init__(sensor_service=sensor_service,
@@ -29,7 +33,12 @@ class GithubRepositorySensor(PollingSensor):
 
     def setup(self):
         # Empty string '' is not ok but None is fine. (Sigh)
-        config_base_url = self._config.get('base_url', None) or None
+        github_type = self._config.get('github_type', None)
+        if github_type == 'online':
+            config_base_url = DEFAULT_API_URL
+        else:
+            config_base_url = self._config.get('base_url', None) or None
+
         config_token = self._config.get('token', None) or None
         self._client = Github(config_token or None, base_url=config_base_url)
 

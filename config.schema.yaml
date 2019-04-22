@@ -29,7 +29,7 @@ web_url:
   required: false
 
 base_url:
-    description: "GitHub API url, include /api/v3 for GitHub Enterprise. exp: "
+  description: "GitHub API url, include /api/v3 for GitHub Enterprise. exp: "
   type: "string"
   default: "https://github.example.com/api/v3"
   required: false
@@ -41,7 +41,7 @@ deployment_environment:
   default: "production"
 
 repository_sensor:
-  description: "Sensor specific settings."
+  description: "Sensor specific settings, with default github type."
   type: "object"
   required: false
   additionalProperties: false
