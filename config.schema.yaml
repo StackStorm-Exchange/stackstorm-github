@@ -25,14 +25,14 @@ github_type:
 web_url:
   description: "The GitHub URL."
   type: "string"
-  default: "https://github.com"
-  required: true
+  default: "https://github.example.com"
+  required: false
 
 base_url:
-  description: "GitHub API url, include /api/v3 for GitHub Enterprise."
+    description: "GitHub API url, include /api/v3 for GitHub Enterprise. exp: "
   type: "string"
-  default: "https://api.github.com"
-  required: true
+  default: "https://github.example.com/api/v3"
+  required: false
 
 deployment_environment:
   description: "The environment for this StackStorm server."

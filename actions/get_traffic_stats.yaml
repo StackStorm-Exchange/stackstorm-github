@@ -9,3 +9,7 @@ parameters:
     type: string
     description: "Repository to query for traffic stats (org/repo)"
     required: true
+  github_type:
+    type: "string"
+    description: "The type of github installation to target, if unset will use the configured default."
+    default: ~

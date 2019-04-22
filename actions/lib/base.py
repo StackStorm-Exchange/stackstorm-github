@@ -22,17 +22,22 @@ class BaseGithubAction(Action):
         super(BaseGithubAction, self).__init__(config=config)
         token = self.config.get('token', None)
         self.token = token or None
-        self.web_url = self.config.get('web_url', DEFAULT_WEB_URL)
-        self.base_url = self.config.get('base_url', DEFAULT_API_URL)
+
+        self.web_url = self.config.get('web_url', None)
+        self.base_url = self.config.get('base_url', None)
 
         self.default_github_type = self.config.get('github_type', None)
 
-        self._client = Github(self.token, base_url=self.base_url)
+        if self.default_github_type == 'online':
+            self._client = Github(self.token, base_url=DEFAULT_API_URL)
+        else:
+            self._client = Github(self.token, base_url=self.base_url)
+
         self._session = requests.Session()
 
-    def _web_session(self):
+    def _web_session(self, web_url=DEFAULT_WEB_URL):
         '''Returns a requests session to scrape off the web'''
-        login_url = DEFAULT_WEB_URL + '/login'
+        login_url = web_url + '/login'
         session = requests.Session()
         request = session.get(login_url).text
         html = BeautifulSoup(request)
@@ -47,13 +52,18 @@ class BaseGithubAction(Action):
             'authenticity_token': token
         }
 
-        session_url = DEFAULT_WEB_URL + session_path
+        session_url = web_url + session_path
         session.post(session_url, data=login_data)
         return session
 
-    def _get_analytics(self, category, repo):
-        url = DEFAULT_WEB_URL + repo + '/graphs/' + category + '.json'
-        s = self._web_session()
+    def _get_analytics(self, category, repo, enterprise):
+        if enterprise:
+            url = self.web_url + repo + '/graphs/' + category + '.json'
+            s = self._web_session(self.web_url)
+        else:
+            url = DEFAULT_WEB_URL + repo + '/graphs/' + category + '.json'
+            s = self._web_session()
+
         response = s.get(url)
         return response.json()
 
@@ -91,13 +101,13 @@ class BaseGithubAction(Action):
 
         return token
 
-    def _change_to_user_token(self, user, enterprise=False):
+    def _change_to_user_token(self, user, enterprise):
         token = self._get_user_token(user, enterprise)
 
         if enterprise:
-            self._client = Github(token, base_url=self.enterprise_url)
+            self._client = Github(token, base_url=self.base_url)
         else:
-            self._client = Github(token, base_url=self.github_url)
+            self._client = Github(token, base_url=DEFAULT_API_URL)
 
         return True
 
@@ -105,9 +115,9 @@ class BaseGithubAction(Action):
         headers = {'Authorization': 'token {}'.format(token)}
 
         if enterprise:
-            url = "{}{}".format(self.enterprise_url, uri)
+            url = "{}{}".format(self.base_url, uri)
         else:
-            url = "{}{}".format(self.github_url, uri)
+            url = "{}{}".format(DEFAULT_API_URL, uri)
 
         try:
             r = self._session.request(method,
