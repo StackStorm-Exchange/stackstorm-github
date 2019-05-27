@@ -1,3 +1,4 @@
--e git+https://github.com/PyGithub/PyGithub#egg=PyGithub
+PyGithub==1.43.7
+urllib3
 #requests>=2.5.1,<2.6
 beautifulsoup4>=4.7.1,<4.8
