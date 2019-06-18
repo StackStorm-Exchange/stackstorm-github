@@ -56,6 +56,10 @@ Currently supported event types:
 * ``ReleaseEvent`` - Triggered when new release is available.
 * ``PushEvent`` - Triggered when a repository branch is pushed to. In addition to branch pushes, webhook push events are also triggered when repository tags are pushed.
 
+**Note** : The sensor will only listen events for the `github_type` you chosen
+           in config.yaml
+
+
 #### github.repository_event trigger
 
 Example trigger payload:
@@ -131,7 +135,6 @@ command:
 ### Limitations
 
 - You need to have logged an OAuth key with StackStorm (via `github.store_oauth_token`).
-- It only works for the default `github_type`.
 - If using with GitHub.com your ST2 server needs to be contactable via the internet!
 - Deployment Statuses will be logged as the creating user in GitHub.
 - With StackStorm v2.1+ you should be able to deploy tags.
