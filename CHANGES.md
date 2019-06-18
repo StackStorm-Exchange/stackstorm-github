@@ -1,5 +1,10 @@
 # Changelog
 
+
+## 1.0.0
+
+* Clean up `enterprise_url` params, fixing github enterprise support
+
 ## 0.8.4
 
 * Version bump to fix tagging issues, no code changes
@@ -14,7 +19,7 @@
 
 ## 0.8.1
 
-* Make `repository_sensor` section in config schema optional 
+* Make `repository_sensor` section in config schema optional
 
 ## 0.8.0
 
@@ -23,7 +28,7 @@
 
 ## 0.7.1
 
-* Update sensor to use ``base_url`` option. 
+* Update sensor to use ``base_url`` option.
 
 ## 0.7.0
 
@@ -54,7 +59,7 @@
 * Migrate config.yaml to config.schema.yaml.
 * Add actions and aliases managing releases (list, create, latest).
 * Add actions and aliases for managing deployments.
-* Add action and aliases for sorting a user scoped GitHub oauth token 
+* Add action and aliases for sorting a user scoped GitHub oauth token
   for GitHub.com and GitHub Enterprise.
 
 ## v0.4.0

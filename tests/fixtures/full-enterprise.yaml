@@ -1,4 +1,5 @@
-enterprise_url: "https://github.exmple.com/api/v3"
+web_url: "https://github.exmple.com"
+base_url: "https://github.exmple.com/api/v3"
 token: "foobar"
 
-default: "enterprise"
+github_type: "enterprise"

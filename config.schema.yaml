@@ -22,15 +22,17 @@ github_type:
     - "enterprise"
   required: true
 
-base_url:
-  description: "The GitHub URL, for GitHub Enterprise please set enterprise_url."
+web_url:
+  description: "The GitHub URL."
   type: "string"
-  default: "https://api.github.com"
-  required: true
+  default: "https://github.example.com"
+  required: false
 
-enterprise_url:
-  description: "GitHub API url (including /api/v3) of your GitHub Enterprise hostname."
+base_url:
+  description: "GitHub API url, include /api/v3 for GitHub Enterprise. exp: "
   type: "string"
+  default: "https://github.example.com/api/v3"
+  required: false
 
 deployment_environment:
   description: "The environment for this StackStorm server."
@@ -39,7 +41,7 @@ deployment_environment:
   default: "production"
 
 repository_sensor:
-  description: "Sensor specific settings."
+  description: "Sensor specific settings, with default github type."
   type: "object"
   required: false
   additionalProperties: false
