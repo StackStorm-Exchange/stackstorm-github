@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.0
+
+* Add new ``github.get_pull`` action which allows user to retrieve details about
+  a specific PR.
 
 ## 1.0.0
 
