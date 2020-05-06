@@ -31,9 +31,9 @@ parameters:
     required: false
   committer:
     type: "string"
-    description: "If no information is given the authenticated user's information will be used. You must specify both a name and email."
+    description: "If no information is given the authenticated user's information will be used. You must specify both a name and email. Expected format: FirstName LastName <email@address>"
     required: false
   author:
     type: "string"
-    description: "If omitted this will be filled in with committer information. If passed, you must specify both a name and email."
+    description: "If omitted this will be filled in with committer information. If passed, you must specify both a name and email. Expected format: FirstName LastName <email@address>"
     required: false

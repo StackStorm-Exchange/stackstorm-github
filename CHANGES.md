@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.1
+
+* Bug fix where author/committer information wasn't correctly passed for file_create/update actions. Updated parameters' description with expected format should you want to add committer and/or author.
+
 ## 1.2.0
 
 __IMPORTANT__: Configuration scheme changed to mark token and password as secret, if you were using st2 datastore, you might need to encrypt the values!
