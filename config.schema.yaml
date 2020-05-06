@@ -2,8 +2,9 @@
 token:
   description: "GitHub oAuth Token"
   type: "string"
-  default: "{{system.github_oauth_token}}"
+  default: "{{ st2kv.system.github_oauth_token }}"
   required: true
+  secret: true
 
 user:
   description: "GitHub Username"
@@ -12,6 +13,7 @@ user:
 password:
   description: "GitHub Password"
   type: "string"
+  secret: true
 
 github_type:
   description: "Default to either github or enterprise."

@@ -1,5 +1,5 @@
 ---
-token: "{{system.github_oauth_token}}"
+token: "{{ st2kv.system.github_oauth_token }}"
 user: "Stanley"
 password: "P4ssw0rd"
 github_type: "online"

@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.2.0
+
+__IMPORTANT__: Configuration scheme changed to mark token and password as secret, if you were using st2 datastore, you might need to encrypt the values!
+ 
+* Add new ``github.get_contents`` action which allows user to retrieve file and repository contents.
+* Add new ``github.create_file`` action which allows user to create new files in repositories.
+* Add new ``github.update_file`` action which allows user to update existing files in repositories.
+* Bump libs version in requirements.txt
+
 ## 1.1.0
 
 * Add new ``github.get_pull`` action which allows user to retrieve details about

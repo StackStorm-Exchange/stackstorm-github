@@ -1,0 +1,39 @@
+---
+name: create_file
+runner_type: python-script
+description: Create a file in this repository.
+enabled: true
+entry_point: create_file.py
+parameters:
+  user:
+    type: "string"
+    description: "User / organization name."
+    required: true
+  repo:
+    type: "string"
+    description: "Repository name."
+    required: true
+  path:
+    type: "string"
+    description: "Path of the file in the repository."
+    required: true
+  message:
+    type: "string"
+    description: "Commit message."
+    required: true
+  content:
+    type: "string"
+    description: "The actual data in the file."
+    required: true
+  branch:
+    type: "string"
+    description: "Branch to create the commit on. Defaults to the default branch of the repository"
+    required: false
+  committer:
+    type: "string"
+    description: "If no information is given the authenticated user's information will be used. You must specify both a name and email."
+    required: false
+  author:
+    type: "string"
+    description: "If omitted this will be filled in with committer information. If passed, you must specify both a name and email."
+    required: false

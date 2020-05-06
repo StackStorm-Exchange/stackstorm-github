@@ -107,6 +107,9 @@ StackStorm webhook handler.
 * ``list_pulls`` - List all pull requests for a particular repo.
 * ``review_pull`` - Create a review for the provided pull request.
 * ``merge_pull`` - Merge the provided pull request.
+* ``get_contents`` - Get repository or file contents.
+* ``create_file`` - Create new file.
+* ``update_file`` - Update existing file.
 
 ## Rules
 

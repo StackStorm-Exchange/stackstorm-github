@@ -7,7 +7,9 @@ __all__ = [
     'pull_to_dict',
     'commit_to_dict',
     'label_to_dict',
-    'user_to_dict'
+    'user_to_dict',
+    'contents_to_dict',
+    'file_response_to_dict'
 ]
 
 
@@ -75,6 +77,7 @@ def pull_to_dict(pull):
     result['head'] = pull.head.ref
     result['state'] = pull.state
     result['merged'] = pull.merged
+    # noinspection SpellCheckingInspection
     result['mergeable_state'] = pull.mergeable_state
     result['merge_commit_sha'] = pull.merge_commit_sha
 
@@ -116,17 +119,13 @@ def pull_to_dict(pull):
 
 
 def commit_to_dict(commit):
-    result = {}
-    result['sha'] = commit.sha
+    result = {'sha': commit.sha}
     return result
 
 
 def label_to_dict(label):
-    result = {}
+    result = {'name': label.name, 'color': label.color, 'url': label.url}
 
-    result['name'] = label.name
-    result['color'] = label.color
-    result['url'] = label.url
     return result
 
 
@@ -134,9 +133,7 @@ def user_to_dict(user):
     if not user:
         return None
 
-    result = {}
-    result['name'] = user.name
-    result['login'] = user.login
+    result = {'name': user.name, 'login': user.login}
     return result
 
 
@@ -144,8 +141,71 @@ def team_to_dict(team):
     if not team:
         return None
 
-    result = {}
-    result['id'] = team.id
-    result['name'] = team.name
-    result['members_count'] = team.members_count
+    result = {'id': team.id, 'name': team.name, 'members_count': team.members_count}
+    return result
+
+
+def contents_to_dict(contents, decode=False):
+    if not contents:
+        return None
+
+    directory = False
+    if isinstance(contents, list):
+        directory = True
+    else:
+        contents = [contents]
+
+    result = []
+    data = {}
+
+    for item in contents:
+        item_type = item.type
+        data['type'] = item_type
+        if item_type == 'symlink':
+            data['target'] = item.target
+        elif item_type == 'submodule':
+            data['submodule_git_url'] = item.submodule_git_url
+        elif not directory:
+            encoding = item.encoding
+            content = item.content
+            data['encoding'] = encoding
+            if decode and encoding == 'base64':
+                content = decode_base64(content)
+            data['content'] = content
+
+        data['size'] = item.size
+        data['name'] = item.name
+        data['path'] = item.path
+        data['sha'] = item.sha
+        data['url'] = item.url
+        data['git_url'] = item.git_url
+        data['html_url'] = item.html_url
+        data['download_url'] = item.download_url
+        result.append(data)
+
+    if not directory:
+        return result[0]
+    else:
+        return result
+
+
+def decode_base64(data):
+    """Decode base64, padding being optional.
+
+    :param data: Base64 data as an ASCII byte string
+    :returns: The decoded byte string.
+
+    """
+    missing_padding = len(data) % 4
+    if missing_padding != 0:
+        data += b'=' * (4 - missing_padding)
+
+    import base64
+    data = data.encode("utf-8")
+    data = base64.b64decode(data).decode("utf-8")
+    return data
+
+
+def file_response_to_dict(response):
+    result = {'commit': response['commit'].sha}
     return result

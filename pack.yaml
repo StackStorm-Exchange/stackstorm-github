@@ -8,7 +8,7 @@ keywords:
   - git
   - scm
   - serverless
-version : 1.1.0
+version : 1.2.0
 python_versions:
   - "2"
   - "3"
@@ -16,3 +16,4 @@ author : StackStorm, Inc.
 email : info@stackstorm.com
 contributors:
   - Jon Middleton <jon.middleton@pulsant.com>
+  - Igor Cherkaev <igor.cherkaev@copart.com>
