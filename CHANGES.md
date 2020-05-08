@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.2
+
+* Allow passing base64 encoded content to update and create file actions.
+
 ## 1.2.1
 
 * Bug fix where author/committer information wasn't correctly passed for file_create/update actions. Updated parameters' description with expected format should you want to add committer and/or author.

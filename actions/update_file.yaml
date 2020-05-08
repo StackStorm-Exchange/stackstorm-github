@@ -25,6 +25,14 @@ parameters:
     type: "string"
     description: "The actual data in the file."
     required: true
+  encoding:
+    type: "string"
+    description: "Specify if the input content is encoded."
+    enum:
+      - "none"
+      - "base64"
+    default: "none"
+    required: false
   sha:
     type: "string"
     description: "The blob SHA of the file being replaced."

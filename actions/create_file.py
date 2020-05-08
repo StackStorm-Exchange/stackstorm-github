@@ -1,5 +1,5 @@
 from lib.base import BaseGithubAction
-from lib.formatters import file_response_to_dict
+from lib.formatters import file_response_to_dict, decode_base64
 from lib.utils import prep_github_params_for_file_ops
 
 __all__ = [
@@ -8,8 +8,12 @@ __all__ = [
 
 
 class CreateFileAction(BaseGithubAction):
-    def run(self, user, repo, path, message, content, branch=None, committer=None, author=None):
+    def run(self, user, repo, path, message, content, branch=None, committer=None, author=None,
+            encoding=None):
         author, branch, committer = prep_github_params_for_file_ops(author, branch, committer)
+
+        if encoding and encoding == 'base64':
+            content = decode_base64(content)
 
         user = self._client.get_user(user)
         repo = user.get_repo(repo)
