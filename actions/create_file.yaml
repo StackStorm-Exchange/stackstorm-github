@@ -25,6 +25,14 @@ parameters:
     type: "string"
     description: "The actual data in the file."
     required: true
+  encoding:
+    type: "string"
+    description: "Specify if the input content is encoded."
+    enum:
+      - "none"
+      - "base64"
+    default: "none"
+    required: false
   branch:
     type: "string"
     description: "Branch to create the commit on. Defaults to the default branch of the repository"

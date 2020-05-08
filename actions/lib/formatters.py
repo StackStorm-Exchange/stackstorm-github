@@ -9,7 +9,8 @@ __all__ = [
     'label_to_dict',
     'user_to_dict',
     'contents_to_dict',
-    'file_response_to_dict'
+    'file_response_to_dict',
+    'decode_base64'
 ]
 
 
