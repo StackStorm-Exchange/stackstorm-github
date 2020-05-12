@@ -98,15 +98,18 @@ StackStorm webhook handler.
 
 * ``add_comment`` - Add comment to the provided issue / pull request.
 * ``add_status`` - Add commit status to the provided commit.
+* ``create_file`` - Create new file.
 * ``create_issue`` - Create a new issue.
-* ``list_issues`` - List all the issues for a particular repo (includes pull
-  requests since pull requests are just a special type of issues).
+* ``get_contents`` - Get repository or file contents.
 * ``get_issue`` - Retrieve information about a particular issue. Note: You
   only need to specify authentication token in the config if you use this
   action with a private repository.
+* ``list_issues`` - List all the issues for a particular repo (includes pull
+  requests since pull requests are just a special type of issues).
 * ``list_pulls`` - List all pull requests for a particular repo.
-* ``review_pull`` - Create a review for the provided pull request.
 * ``merge_pull`` - Merge the provided pull request.
+* ``review_pull`` - Create a review for the provided pull request.
+* ``update_file`` - Update existing file.
 
 ## Rules
 

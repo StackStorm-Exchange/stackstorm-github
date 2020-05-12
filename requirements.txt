@@ -1,4 +1,4 @@
-PyGithub==1.43.7
+PyGithub==1.45
 urllib3
-#requests>=2.5.1,<2.6
-beautifulsoup4>=4.7.1,<4.8
+requests==2.23.0
+beautifulsoup4==4.7.1

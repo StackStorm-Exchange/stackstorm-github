@@ -1,0 +1,29 @@
+---
+name: get_contents
+runner_type: python-script
+description: Gets the contents of a file or directory in a repository.
+enabled: true
+entry_point: get_contents.py
+parameters:
+  user:
+    type: "string"
+    description: "User / organization name."
+    required: true
+  repo:
+    type: "string"
+    description: "Repository name."
+    required: true
+  ref:
+    type: "string"
+    description: "Git ref."
+    required: false
+    default: "HEAD"
+  path:
+    type: "string"
+    description: "Path to file."
+    required: true
+  decode:
+    type: boolean
+    description: "Decode content."
+    required: false
+    default: false

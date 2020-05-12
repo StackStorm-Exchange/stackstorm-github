@@ -18,6 +18,9 @@ DEFAULT_API_URL = 'https://api.github.com'
 
 
 class BaseGithubAction(Action):
+    def run(self, **kwargs):
+        pass
+
     def __init__(self, config):
         super(BaseGithubAction, self).__init__(config=config)
         token = self.config.get('token', None)
@@ -36,7 +39,7 @@ class BaseGithubAction(Action):
         self._session = requests.Session()
 
     def _web_session(self, web_url=DEFAULT_WEB_URL):
-        '''Returns a requests session to scrape off the web'''
+        """Returns a requests session to scrape off the web"""
         login_url = web_url + '/login'
         session = requests.Session()
         request = session.get(login_url).text
@@ -94,7 +97,7 @@ class BaseGithubAction(Action):
         token = self.action_service.get_value(token_name + user)
 
         # if a token is not returned, try using reversing changes made by
-        # GitHub Enterpise during LDAP sync'ing.
+        # GitHub Enterprise during LDAP sync'ing.
         if token is None:
             token = self.action_service.get_value(
                 token_name + user.replace("-", "."))
@@ -119,6 +122,7 @@ class BaseGithubAction(Action):
         else:
             url = "{}{}".format(DEFAULT_API_URL, uri)
 
+        r = None
         try:
             r = self._session.request(method,
                                       url,
