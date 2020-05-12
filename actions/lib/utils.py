@@ -6,11 +6,12 @@ __all__ = [
     'prep_github_params_for_file_ops'
 ]
 
+# expecting string in the format of "FirstName LastName <email@address>"
+author_pattern = re.compile(r"^(.*?)\s+<([a-zA-Z0-9_.+-]+?@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)?>$")
+
 
 def create_github_author(s):
-    # expecting string in the format of "FirstName LastName <email@address>"
-    pattern = re.compile(r"^(.*?)\s+<([a-zA-Z0-9_.+-]+?@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)?>$")
-    match = re.match(pattern, s)
+    match = re.match(author_pattern, s)
     if match:
         name = match.group(1)
         email = match.group(2)
@@ -22,12 +23,15 @@ def create_github_author(s):
 def prep_github_params_for_file_ops(author, branch, committer):
     if not branch:
         branch = NotSet
+
     if committer:
         committer = create_github_author(committer)
-    if not committer:
+    else:
         committer = NotSet
+
     if author:
         author = create_github_author(author)
-    if not author:
+    else:
         author = NotSet
+
     return author, branch, committer
