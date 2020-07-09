@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0
+
+* Add new ``github.get_branch_protection`` action which allows user to retrieve protection settings set on branch.
+* Add new ``github.update_branch_protection`` action which allows user to update protection settings for branch.
+* Add new ``github.delete_branch_protection`` action which allows user to delete protection from branch.
+
 ## 1.2.0
 
 __IMPORTANT__: Configuration scheme changed to mark token and password as secret, if you were using st2 datastore, you might need to encrypt the values!

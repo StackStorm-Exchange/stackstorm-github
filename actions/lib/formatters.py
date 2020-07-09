@@ -1,8 +1,9 @@
 import re
-
+from lib.utils import branch_protection_attributes, required_pull_request_reviews_attributes
 from st2common.util import isotime
 
 __all__ = [
+    'branch_protection_to_dict',
     'issue_to_dict',
     'pull_to_dict',
     'commit_to_dict',
@@ -12,6 +13,45 @@ __all__ = [
     'file_response_to_dict',
     'decode_base64'
 ]
+
+
+def branch_protection_to_dict(branch_protection):
+    result = {}
+    for attr in branch_protection_attributes:
+
+        if hasattr(branch_protection, attr):
+            if attr == 'required_status_checks':
+                req_status_checks = branch_protection.required_status_checks
+                if req_status_checks:
+                    result[attr] = {'contexts': req_status_checks.contexts,
+                                    'strict': req_status_checks.strict}
+                else:
+                    result[attr] = None
+                continue
+            if attr == 'required_pull_request_reviews':
+                req_pr_reviews = branch_protection.required_pull_request_reviews
+                if req_pr_reviews:
+                    result[attr] = {}
+                    for attr2 in required_pull_request_reviews_attributes:
+                        if attr2 == 'dismissal_users':
+                            users = []
+                            for user in req_pr_reviews.dismissal_users:
+                                users.append(user.login)
+                            result[attr][attr2] = users
+                            continue
+                        if attr2 == 'dismissal_tems':
+                            teams = []
+                            for team in req_pr_reviews.dismissal_teams:
+                                teams.append(team.slug)
+                            result[attr][attr2] = teams
+                            continue
+                        result[attr][attr2] = getattr(req_pr_reviews, attr2)
+                else:
+                    result[attr] = None
+                continue
+            result[attr] = getattr(branch_protection, attr)
+
+    return result
 
 
 def issue_to_dict(issue):
