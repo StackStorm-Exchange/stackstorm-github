@@ -144,3 +144,4 @@ command:
 - If using with GitHub.com your ST2 server needs to be contactable via the internet!
 - Deployment Statuses will be logged as the creating user in GitHub.
 - With StackStorm v2.1+ you should be able to deploy tags.
+- Certain branch protection attributes are not supported by current Python GitHub module.
