@@ -1,0 +1,20 @@
+---
+name: get_branch_protection
+runner_type: python-script
+description: Gets branch protection details for given repo and branch.
+enabled: true
+entry_point: get_branch_protection.py
+parameters:
+  user:
+    type: "string"
+    description: "User / organization name."
+    required: true
+  repo:
+    type: "string"
+    description: "Repository name."
+    required: true
+  branch:
+    type: "string"
+    description: "Branch name."
+    required: false
+    default: "master"

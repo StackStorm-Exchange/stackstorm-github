@@ -100,6 +100,8 @@ StackStorm webhook handler.
 * ``add_status`` - Add commit status to the provided commit.
 * ``create_file`` - Create new file.
 * ``create_issue`` - Create a new issue.
+* ``delete_branch_protection`` - Remove branch protection settings.
+* ``get_branch_protection`` - Get branch protection settings.
 * ``get_contents`` - Get repository or file contents.
 * ``get_issue`` - Retrieve information about a particular issue. Note: You
   only need to specify authentication token in the config if you use this
@@ -109,6 +111,7 @@ StackStorm webhook handler.
 * ``list_pulls`` - List all pull requests for a particular repo.
 * ``merge_pull`` - Merge the provided pull request.
 * ``review_pull`` - Create a review for the provided pull request.
+* ``update_branch_protection`` - Update branch protection settings.
 * ``update_file`` - Update existing file.
 
 ## Rules

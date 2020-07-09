@@ -3,11 +3,23 @@ from github.InputGitAuthor import InputGitAuthor
 from github.GithubObject import NotSet
 
 __all__ = [
-    'prep_github_params_for_file_ops'
+    'prep_github_params_for_file_ops', 'branch_protection_attributes',
+    'required_pull_request_reviews_attributes', 'restrictions_attributes'
 ]
 
 # expecting string in the format of "FirstName LastName <email@address>"
 author_pattern = re.compile(r"^(.*?)\s+<([a-zA-Z0-9_.+-]+?@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)?>$")
+
+branch_protection_attributes = ['url', 'required_status_checks', 'enforce_admins',
+                                'required_pull_request_reviews', 'required_linear_history',
+                                'allow_force_pushes', 'allow_deletions']
+
+required_pull_request_reviews_attributes = ['dismissal_teams', 'dismissal_users',
+                                            'dismiss_stale_reviews',
+                                            'require_code_owner_reviews',
+                                            'required_approving_review_count']
+
+restrictions_attributes = ['users', 'teams', 'apps']
 
 
 def create_github_author(s):
