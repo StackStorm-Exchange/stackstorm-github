@@ -20,36 +20,34 @@ def branch_protection_to_dict(branch_protection):
     result = {}
     for attr in branch_protection_attributes:
 
-        if hasattr(branch_protection, attr):
-            if attr == 'required_status_checks':
-                req_status_checks = branch_protection.required_status_checks
-                if req_status_checks:
-                    result[attr] = {'contexts': req_status_checks.contexts,
-                                    'strict': req_status_checks.strict}
-                else:
-                    result[attr] = None
-                continue
-            if attr == 'required_pull_request_reviews':
-                req_pr_reviews = branch_protection.required_pull_request_reviews
-                if req_pr_reviews:
-                    result[attr] = {}
-                    for attr2 in required_pull_request_reviews_attributes:
-                        if attr2 == 'dismissal_users':
-                            users = []
-                            for user in req_pr_reviews.dismissal_users:
-                                users.append(user.login)
-                            result[attr][attr2] = users
-                            continue
-                        if attr2 == 'dismissal_tems':
-                            teams = []
-                            for team in req_pr_reviews.dismissal_teams:
-                                teams.append(team.slug)
-                            result[attr][attr2] = teams
-                            continue
+        # skip unknown/unsupported attributes
+        if not hasattr(branch_protection, attr):
+            continue
+
+        # special treatment for some of the attributes
+        if attr == 'required_status_checks':
+            req_status_checks = branch_protection.required_status_checks
+            if req_status_checks:
+                result[attr] = {'contexts': req_status_checks.contexts,
+                                'strict': req_status_checks.strict}
+            else:
+                result[attr] = None
+        elif attr == 'required_pull_request_reviews':
+            req_pr_reviews = branch_protection.required_pull_request_reviews
+            if req_pr_reviews:
+                result[attr] = {}
+                for attr2 in required_pull_request_reviews_attributes:
+                    if attr2 == 'dismissal_users':
+                        users = [user.login for user in req_pr_reviews.dismissal_users]
+                        result[attr][attr2] = users
+                    elif attr2 == 'dismissal_teams':
+                        teams = [team.slug for team in req_pr_reviews.dismissal_teams]
+                        result[attr][attr2] = teams
+                    else:
                         result[attr][attr2] = getattr(req_pr_reviews, attr2)
-                else:
-                    result[attr] = None
-                continue
+            else:
+                result[attr] = None
+        else:
             result[attr] = getattr(branch_protection, attr)
 
     return result
