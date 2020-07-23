@@ -1,0 +1,25 @@
+---
+name: list_members
+runner_type: python-script
+description: Retrieve a list of members for a particular organization.
+pack: github
+enabled: true
+entry_point: list_members.py
+parameters:
+  user:
+    type: "string"
+    description: "User / organization name."
+    required: true
+  filter:
+    type: "string"
+    description: "Filter string."
+    required: false
+  role:
+    type: "string"
+    description: "Role of the member."
+    required: false
+  limit:
+    type: "number"
+    description: "Maximum number of issues to return."
+    required: false
+    default: 20

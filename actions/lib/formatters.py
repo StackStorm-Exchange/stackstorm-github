@@ -11,6 +11,7 @@ __all__ = [
     'user_to_dict',
     'contents_to_dict',
     'file_response_to_dict',
+    'repo_to_dict',
     'decode_base64'
 ]
 
@@ -19,34 +20,36 @@ def branch_protection_to_dict(branch_protection):
     result = {}
     for attr in branch_protection_attributes:
 
-        # skip unknown/unsupported attributes
-        if not hasattr(branch_protection, attr):
-            continue
-
-        # special treatment for some of the attributes
-        if attr == 'required_status_checks':
-            req_status_checks = branch_protection.required_status_checks
-            if req_status_checks:
-                result[attr] = {'contexts': req_status_checks.contexts,
-                                'strict': req_status_checks.strict}
-            else:
-                result[attr] = None
-        elif attr == 'required_pull_request_reviews':
-            req_pr_reviews = branch_protection.required_pull_request_reviews
-            if req_pr_reviews:
-                result[attr] = {}
-                for attr2 in required_pull_request_reviews_attributes:
-                    if attr2 == 'dismissal_users':
-                        users = [user.login for user in req_pr_reviews.dismissal_users]
-                        result[attr][attr2] = users
-                    elif attr2 == 'dismissal_teams':
-                        teams = [team.slug for team in req_pr_reviews.dismissal_teams]
-                        result[attr][attr2] = teams
-                    else:
+        if hasattr(branch_protection, attr):
+            if attr == 'required_status_checks':
+                req_status_checks = branch_protection.required_status_checks
+                if req_status_checks:
+                    result[attr] = {'contexts': req_status_checks.contexts,
+                                    'strict': req_status_checks.strict}
+                else:
+                    result[attr] = None
+                continue
+            if attr == 'required_pull_request_reviews':
+                req_pr_reviews = branch_protection.required_pull_request_reviews
+                if req_pr_reviews:
+                    result[attr] = {}
+                    for attr2 in required_pull_request_reviews_attributes:
+                        if attr2 == 'dismissal_users':
+                            users = []
+                            for user in req_pr_reviews.dismissal_users:
+                                users.append(user.login)
+                            result[attr][attr2] = users
+                            continue
+                        if attr2 == 'dismissal_tems':
+                            teams = []
+                            for team in req_pr_reviews.dismissal_teams:
+                                teams.append(team.slug)
+                            result[attr][attr2] = teams
+                            continue
                         result[attr][attr2] = getattr(req_pr_reviews, attr2)
-            else:
-                result[attr] = None
-        else:
+                else:
+                    result[attr] = None
+                continue
             result[attr] = getattr(branch_protection, attr)
 
     return result
@@ -195,9 +198,9 @@ def contents_to_dict(contents, decode=False):
         contents = [contents]
 
     result = []
-    data = {}
 
     for item in contents:
+        data = {}
         item_type = item.type
         data['type'] = item_type
         if item_type == 'symlink':
@@ -226,6 +229,21 @@ def contents_to_dict(contents, decode=False):
         return result[0]
     else:
         return result
+
+def repo_to_dict(repo):
+    result = {}
+
+    result['name'] = repo.name
+    result['language'] = repo.language
+    result['default_branch'] = repo.default_branch
+    result['description'] = repo.description
+    result['homepage'] = repo.homepage
+    result['master_branch'] = repo.master_branch
+    result['owner_name'] = repo.owner.name
+    result['url'] = repo.url
+    
+    
+    return result
 
 
 def decode_base64(data):

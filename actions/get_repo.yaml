@@ -1,0 +1,17 @@
+---
+name: get_repo
+runner_type: python-script
+pack: github
+description: Retrieve information about a particular Github repo.
+enabled: true
+entry_point: get_repo.py
+parameters:
+  user:
+    type: "string"
+    description: "User / organization name."
+    required: true
+  repo:
+    type: "string"
+    description: "Repository name."
+    required: true
+

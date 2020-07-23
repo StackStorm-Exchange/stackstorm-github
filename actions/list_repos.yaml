@@ -1,0 +1,25 @@
+---
+name: list_repos
+runner_type: python-script
+description: Retrieve a list of repos for a particular org.
+enabled: true
+pack: github
+entry_point: list_repos.py
+parameters:
+  user:
+    type: "string"
+    description: "User / organization name."
+    required: true
+  visibility:
+    type: "string"
+    description: "Visibility (e.g. public / private)."
+    required: false
+  since:
+    type: "number"
+    description: "Only returns issues newer than this timestamp."
+    required: false
+  limit:
+    type: "number"
+    description: "Maximum number of issues to return."
+    required: false
+    default: 20
