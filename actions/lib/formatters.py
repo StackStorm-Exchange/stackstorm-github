@@ -12,6 +12,7 @@ __all__ = [
     'contents_to_dict',
     'file_response_to_dict',
     'ref_to_dict',
+    'repo_to_dict',
     'decode_base64'
 ]
 
@@ -199,9 +200,9 @@ def contents_to_dict(contents, decode=False):
         contents = [contents]
 
     result = []
-    data = {}
 
     for item in contents:
+        data = {}
         item_type = item.type
         data['type'] = item_type
         if item_type == 'symlink':
@@ -230,6 +231,21 @@ def contents_to_dict(contents, decode=False):
         return result[0]
     else:
         return result
+
+def repo_to_dict(repo):
+    result = {}
+
+    result['name'] = repo.name
+    result['language'] = repo.language
+    result['default_branch'] = repo.default_branch
+    result['description'] = repo.description
+    result['homepage'] = repo.homepage
+    result['master_branch'] = repo.master_branch
+    result['owner_name'] = repo.owner.name
+    result['url'] = repo.url
+    
+    
+    return result
 
 
 def decode_base64(data):
