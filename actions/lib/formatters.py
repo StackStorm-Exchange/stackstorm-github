@@ -11,6 +11,7 @@ __all__ = [
     'user_to_dict',
     'contents_to_dict',
     'file_response_to_dict',
+    'ref_to_dict',
     'repo_to_dict',
     'decode_base64'
 ]
@@ -38,10 +39,12 @@ def branch_protection_to_dict(branch_protection):
                 result[attr] = {}
                 for attr2 in required_pull_request_reviews_attributes:
                     if attr2 == 'dismissal_users':
-                        users = [user.login for user in req_pr_reviews.dismissal_users]
+                        users = [
+                            user.login for user in req_pr_reviews.dismissal_users]
                         result[attr][attr2] = users
                     elif attr2 == 'dismissal_teams':
-                        teams = [team.slug for team in req_pr_reviews.dismissal_teams]
+                        teams = [
+                            team.slug for team in req_pr_reviews.dismissal_teams]
                         result[attr][attr2] = teams
                     else:
                         result[attr][attr2] = getattr(req_pr_reviews, attr2)
@@ -181,7 +184,8 @@ def team_to_dict(team):
     if not team:
         return None
 
-    result = {'id': team.id, 'name': team.name, 'members_count': team.members_count}
+    result = {'id': team.id, 'name': team.name,
+              'members_count': team.members_count}
     return result
 
 
@@ -263,4 +267,17 @@ def decode_base64(data):
 
 def file_response_to_dict(response):
     result = {'commit': response['commit'].sha}
+    return result
+
+
+def ref_to_dict(ref):
+    result = {
+        'object': {
+            'sha': ref.object.sha,
+            'type': ref.object.type,
+            'url': ref.object.url
+        },
+        'ref': ref.ref,
+        'url': ref.url
+    }
     return result
