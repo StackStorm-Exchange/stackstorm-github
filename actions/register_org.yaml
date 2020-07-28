@@ -4,7 +4,7 @@ runner_type: "python-script"
 pack: github
 description: "Register an organization."
 enabled: true
-entry_point: "retister_org.py"
+entry_point: "register_org.py"
 parameters:
   url:
     type: "string"
