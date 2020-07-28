@@ -1,0 +1,7 @@
+---
+name: list_registered_org
+runner_type: "python-script"
+pack: github
+description: "list registered organizations."
+enabled: true
+entry_point: "list_registered_orgs.py"

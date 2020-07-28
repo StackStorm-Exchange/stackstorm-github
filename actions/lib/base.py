@@ -2,6 +2,8 @@ from github import Github
 import requests
 from bs4 import BeautifulSoup
 import json
+from st2client.client import Client
+from st2client.models import KeyValuePair
 
 from st2common.runners.base_action import Action
 
@@ -37,6 +39,26 @@ class BaseGithubAction(Action):
             self._client = Github(self.token, base_url=self.base_url)
 
         self._session = requests.Session()
+
+    def _reset(self, org):
+        client = Client()
+        gitorgs = client.keys.get_by_name(name='git-orgs', decrypt=True)
+        if gitorgs:
+            dict=json.loads(gitorgs.value)
+        else:
+            dict={}
+        if org.find('|') == -1:
+            org = org + '|' + self.base_url
+        if org in dict:
+            org = dict[org]
+            self.token = org['token']
+            self.base_url = org['url']
+            self.default_github_type = org['type']
+
+        if self.default_github_type == 'online':
+            self._client = Github(self.token, base_url=DEFAULT_API_URL)
+        else:
+            self._client = Github(self.token, base_url=self.base_url)
 
     def _web_session(self, web_url=DEFAULT_WEB_URL):
         """Returns a requests session to scrape off the web"""

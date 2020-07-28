@@ -1,0 +1,24 @@
+---
+name: register_org
+runner_type: "python-script"
+pack: github
+description: "Register an organization."
+enabled: true
+entry_point: "retister_org.py"
+parameters:
+  url:
+    type: "string"
+    required: true
+    description: "base API url."
+  github_type:
+    type: "string"
+    required: true
+    description: "type of github: online or enterprise"
+  token:
+    type: "string"
+    required: true
+    description: "API token for a member of the organization"
+  user:
+    type: "string"
+    required: true
+    description: "User / organization name."
