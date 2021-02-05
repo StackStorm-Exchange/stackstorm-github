@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.0
+
+* Drop Python 2.7 support
+
 ## 1.3.0
 
 * Add new ``github.get_branch_protection`` action which allows user to retrieve protection settings set on branch.
