@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.1
+
+* Bug fix (#38) where the sensor assumes `event.id` coming from the GitHub api will be in numeric order.
+
 ## 2.0.0
 
 * Drop Python 2.7 support
