@@ -100,6 +100,7 @@ StackStorm webhook handler.
 * ``add_status`` - Add commit status to the provided commit.
 * ``create_file`` - Create new file.
 * ``create_issue`` - Create a new issue.
+* ``create_pull`` - Create a new Pull Request.
 * ``delete_branch_protection`` - Remove branch protection settings.
 * ``get_branch_protection`` - Get branch protection settings.
 * ``get_contents`` - Get repository or file contents.

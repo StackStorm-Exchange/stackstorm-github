@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.0
+
+* Add new ``github.create_pull`` action which allows user create Pull Requests for a branch.
+
 ## 2.0.1
 
 * Bug fix (#38) where the sensor assumes `event.id` coming from the GitHub api will be in numeric order.
