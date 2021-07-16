@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.2
+
+* Bug fix (#41) that `github.get_contents` action would be failed when decode parameter is set.
+
 ## 2.0.1
 
 * Bug fix (#38) where the sensor assumes `event.id` coming from the GitHub api will be in numeric order.
