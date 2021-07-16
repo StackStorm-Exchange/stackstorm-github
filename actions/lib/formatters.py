@@ -205,12 +205,8 @@ def contents_to_dict(contents, decode=False):
         elif item_type == 'submodule':
             data['submodule_git_url'] = item.submodule_git_url
         elif not directory:
-            encoding = item.encoding
-            content = item.content
-            data['encoding'] = encoding
-            if decode and encoding == 'base64':
-                content = decode_base64(content)
-            data['content'] = content
+            data['encoding'] = item.encoding
+            data['content'] = item.decoded_content if decode else item.content
 
         data['size'] = item.size
         data['name'] = item.name
