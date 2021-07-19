@@ -1,8 +1,12 @@
 # Changelog
 
-## 2.0.2
+## 2.1.1
 
 * Bug fix (#41) that `github.get_contents` action would be failed when decode parameter is set.
+
+## 2.1.0
+
+* Add new ``github.create_pull`` action which allows user create Pull Requests for a branch.
 
 ## 2.0.1
 
