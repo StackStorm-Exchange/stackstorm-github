@@ -2,7 +2,8 @@
 
 ## 2.1.1
 
-* Bug fix (#41) that `github.get_contents` action would be failed when decode parameter is set.
+* Bug fix (#41) that `github.get_contents` action would be failed when decode parameter is set,
+  and fix encoding processing problem in `github.create_file` and `github.update_file` actions.
 
 ## 2.1.0
 

@@ -11,7 +11,6 @@ __all__ = [
     'user_to_dict',
     'contents_to_dict',
     'file_response_to_dict',
-    'decode_base64'
 ]
 
 
@@ -222,23 +221,6 @@ def contents_to_dict(contents, decode=False):
         return result[0]
     else:
         return result
-
-
-def decode_base64(data):
-    """Decode base64, padding being optional.
-
-    :param data: Base64 data as an ASCII byte string
-    :returns: The decoded byte string.
-
-    """
-    missing_padding = len(data) % 4
-    if missing_padding != 0:
-        data += b'=' * (4 - missing_padding)
-
-    import base64
-    data = data.encode("utf-8")
-    data = base64.b64decode(data).decode("utf-8")
-    return data
 
 
 def file_response_to_dict(response):
