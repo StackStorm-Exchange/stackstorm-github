@@ -205,7 +205,7 @@ def contents_to_dict(contents, decode=False):
             data['submodule_git_url'] = item.submodule_git_url
         elif not directory:
             data['encoding'] = item.encoding
-            data['content'] = item.decoded_content if decode else item.content
+            data['content'] = item.decoded_content.decode('utf-8') if decode else item.content
 
         data['size'] = item.size
         data['name'] = item.name

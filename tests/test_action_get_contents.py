@@ -78,7 +78,7 @@ class AddCommentActionTestCase(GitHubBaseActionTestCase):
             setattr(mock_content, key, value)
 
         # This is in case of calling ContentFile.decoded_content
-        mock_content.decoded_content = 'test-decoded-content'
+        mock_content.decoded_content = b'test-decoded-content'
 
         # run action and check returned contents
         params = dict(self.action_params, **{'decode': True})
