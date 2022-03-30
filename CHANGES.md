@@ -1,9 +1,13 @@
 # Changelog
 
-## 2.1.1
+## 2.1.2
 
 * Bug fix (#41) that `github.get_contents` action would be failed when decode parameter is set,
   and fix encoding processing problem in `github.create_file` and `github.update_file` actions.
+
+## 2.1.1
+
+* Bug fix (#43) where the sensor will throw an exception if no events are returned from the GitHub api.
 
 ## 2.1.0
 
