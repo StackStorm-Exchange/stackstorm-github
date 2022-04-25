@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.1.2
+
+* Add new ``github.create_organization_repository`` action which allows user to create an organization repository.
+* Add new ``github.create_repository_authenticated_user`` action which allows user to create an user repository.
+* Add new ``github.create_repository_from_template`` action which allows user to create a repository from template.
+* Bug fix on ``github.store_oauth_token.`` to api save the token correctly so that it can be read later.
+* Segure improvement on ``github.store_oauth_token.`` to encrypt de github token in web interface.
+
 ## 2.1.1
 
 * Bug fix (#43) where the sensor will throw an exception if no events are returned from the GitHub api.
