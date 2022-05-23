@@ -1,0 +1,34 @@
+---
+name: check_user_repository_collaborator
+runner_type: python-script
+pack: github
+description: >
+  Check if a user is a repository collaborator.
+  Example:
+    st2 run github.check_user_repository_collaborator owner="organization" repo="reponame" username="collaborator" api_user="token_name"
+enabled: true
+entry_point: check_user_repository_collaborator.py
+parameters:
+  api_user:
+    type: "string"
+    description: "The API user"
+    default: "{{action_context.api_user|default(None)}}"
+  owner:
+    type: "string"
+    description: "The account owner of the repository. The name is not case sensitive."
+    required: true
+  repo:
+    type: "string"
+    description: "The name of the repository. The name is not case sensitive."
+    required: true
+  username:
+    type: "string"
+    description: "The handle for the GitHub user account."
+    required: true
+  github_type:
+    type: "string"
+    description: "The type of github installation to target, if unset will use the configured default."
+    enum:
+      - "online"
+      - "enterprise"
+    default: "enterprise"

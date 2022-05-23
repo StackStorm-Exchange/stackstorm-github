@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.2
+
+* Add new ``github.add_repository_collaborator`` action which allows user to add a collaborator to repository.
+* Add new ``github.check_user_repository_collaborator`` action which allows user to check if an user is a collaborator's repository.
+* Add new ``github.get_repository_collaborators`` action which allows user to list the collaborators of repository.
+
 ## 2.1.1
 
 * Bug fix (#43) where the sensor will throw an exception if no events are returned from the GitHub api.
