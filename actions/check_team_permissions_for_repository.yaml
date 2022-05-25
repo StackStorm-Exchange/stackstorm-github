@@ -1,0 +1,38 @@
+---
+name: check_team_permissions_for_repository
+runner_type: python-script
+pack: github
+description: >
+  Check team permissions for a repository.
+  Example:
+    st2 run github.check_team_permissions_for_repository  organization="organization" owner="owner" repo="reponame" team_slug="team_id" api_user="token_name"
+enabled: true
+entry_point: check_team_permissions_for_repository.py
+parameters:
+  api_user:
+    type: "string"
+    description: "The API user"
+    default: "{{action_context.api_user|default(None)}}"
+  org:
+    type: "string"
+    description: "The organization name. The name is not case sensitive."
+    required: true
+  team_slug:
+    type: "string"
+    description: "The slug of the team name."
+    required: true
+  owner:
+    type: "string"
+    description: "The account owner of the repository. The name is not case sensitive."
+    required: true
+  repo:
+    type: "string"
+    description: "The name of the repository. The name is not case sensitive."
+    required: true
+  github_type:
+    type: "string"
+    description: "The type of github installation to target, if unset will use the configured default."
+    enum:
+      - "online"
+      - "enterprise"
+    default: "enterprise"

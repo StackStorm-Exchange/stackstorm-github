@@ -1,10 +1,12 @@
 # Changelog
 
-## 2.1.2
+## 2.2.0
 
 * Add new ``github.add_repository_collaborator`` action which allows user to add a collaborator to repository.
 * Add new ``github.check_user_repository_collaborator`` action which allows user to check if an user is a collaborator's repository.
 * Add new ``github.get_repository_collaborators`` action which allows user to list the collaborators of repository.
+* Add new ``github.add_update_repository_team`` action which allows user to add a team to repository.
+* Add new ``github.check_team_permissions_for_repository`` action which allows user to check if a team has access to repository.
 
 ## 2.1.1
 
