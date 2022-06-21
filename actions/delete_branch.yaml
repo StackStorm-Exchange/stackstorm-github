@@ -1,7 +1,10 @@
 ---
 name: "delete_branch"
 runner_type: "python-script"
-description: "Deletes a branch from a GitHub repository"
+description: >
+  Deletes a branch from a GitHub repository
+  Example:
+    st2 run github.delete_branch repository="reponame" branch="branch_name" api_user="token_name"
 enabled: true
 entry_point: "delete_branch.py"
 parameters:

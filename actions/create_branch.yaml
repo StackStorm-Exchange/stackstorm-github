@@ -1,7 +1,10 @@
 ---
 name: "create_branch"
 runner_type: "python-script"
-description: "Create a new branch for a GitHub repository"
+description: >
+  Create a new branch for a GitHub repository
+  Example:
+    st2 run github.create_branch repository="reponame" origin_ref="heads/<branch>" new_branch="branch_name" api_user="token_name"
 enabled: true
 entry_point: "create_branch.py"
 parameters:
