@@ -8,8 +8,9 @@ __all__ = [
 
 
 class UpdateFileAction(BaseGithubAction):
-    def run(self, user, repo, path, message, content, sha, branch=None, committer=None,
+    def run(self, user, repo, path, message, content, sha, api_user, github_type, branch=None, committer=None,
             author=None, encoding=None):
+        self._change_to_user_token_if_enterprise(api_user, github_type)
         author, branch, committer = prep_github_params_for_file_ops(author, branch, committer)
 
         if encoding and encoding == 'base64':

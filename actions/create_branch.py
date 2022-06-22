@@ -18,7 +18,7 @@ class CreateBranchAction(BaseGithubAction):
 
         
         # First, we have to get the sha1 for the given origin ref
-        response = self._request("GET", f"/repos/{repository}/git/refs/{origin_ref}",
+        response = self._request("GET", f"/repos/{repository}/git/ref/{origin_ref}",
                                  {},
                                  self.token,
                                  enterprise)

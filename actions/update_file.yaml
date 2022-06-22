@@ -49,3 +49,14 @@ parameters:
     type: "string"
     description: "If omitted this will be filled in with committer information. If passed, you must specify both a name and email. Expected format: FirstName LastName <email@address>"
     required: false
+  api_user:
+    type: "string"
+    description: "The"
+    default: "{{action_context.api_user|default(None)}}"
+  github_type:
+    type: "string"
+    description: "The type of github installation to target, if unset will use the configured default."
+    default: ~
+    enum:
+      - enterprise
+      - online
