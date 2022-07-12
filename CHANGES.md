@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.1.2
+## 2.2.0
 
 * Add new ``github.create_organization_repository`` action which allows user to create an organization repository.
 * Add new ``github.create_repository_authenticated_user`` action which allows user to create an user repository.
