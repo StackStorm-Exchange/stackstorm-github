@@ -14,21 +14,20 @@
 
 from lib.base import BaseGithubAction
 
+
 class StoreOauthTokenAction(BaseGithubAction):
     def run(self, user, token, github_type):
         enterprise = self._is_enterprise(github_type)
 
         if enterprise:
             value_name = "token_enterprise_{}".format(user)
-            results = {'github_type': "enterprise"}
+            results = {"github_type": "enterprise"}
         else:
             value_name = "token_{}".format(user)
-            results = {'github_type': "online"}
+            results = {"github_type": "online"}
 
         self.action_service.set_value(
-            name=value_name,
-            local=False,
-            encrypt=True,
-            value=token.strip())
+            name=value_name, local=False, encrypt=False, value=token.strip()
+        )
 
         return results

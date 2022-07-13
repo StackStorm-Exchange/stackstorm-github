@@ -18,10 +18,11 @@ from lib.base import BaseGithubAction
 class CheckDeploymentEnvAction(BaseGithubAction):
     def run(self, deploy_env):
 
-        if deploy_env == self.config['deployment_environment']:
+        if deploy_env == self.config["deployment_environment"]:
             return True
         else:
             raise ValueError(
                 "No deployment, my env is '{}' and event for '{}'".format(
-                    deploy_env,
-                    self.config['deployment_environment']))
+                    deploy_env, self.config["deployment_environment"]
+                )
+            )

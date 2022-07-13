@@ -1,9 +1,7 @@
 from lib.base import BaseGithubAction
 from lib.formatters import team_to_dict
 
-__all__ = [
-    'ListTeamsAction'
-]
+__all__ = ["ListTeamsAction"]
 
 
 class ListTeamsAction(BaseGithubAction):

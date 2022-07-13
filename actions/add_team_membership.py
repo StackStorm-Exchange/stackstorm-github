@@ -1,9 +1,7 @@
 from lib.base import BaseGithubAction
 from lib.formatters import user_to_dict
 
-__all__ = [
-    'AddTeamMembershipAction'
-]
+__all__ = ["AddTeamMembershipAction"]
 
 
 class AddTeamMembershipAction(BaseGithubAction):

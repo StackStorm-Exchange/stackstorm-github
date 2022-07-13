@@ -1,8 +1,6 @@
 from lib.base import BaseGithubAction
 
-__all__ = [
-    'DeleteBranchProtectionAction'
-]
+__all__ = ["DeleteBranchProtectionAction"]
 
 
 class DeleteBranchProtectionAction(BaseGithubAction):
@@ -15,15 +13,15 @@ class DeleteBranchProtectionAction(BaseGithubAction):
         return True
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import os
 
-    GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
-    GITHUB_ORG = os.environ.get('GITHUB_ORG')
-    GITHUB_REPO = os.environ.get('GITHUB_REPO')
-    GITHUB_BRANCH = os.environ.get('GITHUB_BRANCH')
+    GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
+    GITHUB_ORG = os.environ.get("GITHUB_ORG")
+    GITHUB_REPO = os.environ.get("GITHUB_REPO")
+    GITHUB_BRANCH = os.environ.get("GITHUB_BRANCH")
 
-    act = DeleteBranchProtectionAction(config={'token': GITHUB_TOKEN, 'github_type': 'online'})
+    act = DeleteBranchProtectionAction(config={"token": GITHUB_TOKEN, "github_type": "online"})
     res = act.run(user=GITHUB_ORG, repo=GITHUB_REPO, branch=GITHUB_BRANCH)
     import pprint
 

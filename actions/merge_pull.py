@@ -1,8 +1,6 @@
 from lib.base import BaseGithubAction
 
-__all__ = [
-    'MergePullAction'
-]
+__all__ = ["MergePullAction"]
 
 
 class MergePullAction(BaseGithubAction):
@@ -13,11 +11,11 @@ class MergePullAction(BaseGithubAction):
         pull = repo.get_pull(pull_id)
 
         if pull.mergeable:
-            return (False, 'Pull Request is not mergeable')
+            return (False, "Pull Request is not mergeable")
         if pull.merged:
-            return (False, 'Pull Request is already merged')
+            return (False, "Pull Request is already merged")
 
         status = pull.merge()
 
-        result = {'merged': status.merged, 'message': status.message}
+        result = {"merged": status.merged, "message": status.message}
         return result
