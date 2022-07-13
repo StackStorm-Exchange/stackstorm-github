@@ -2,7 +2,9 @@ from github import GithubObject
 
 from lib.base import BaseGithubAction
 
-__all__ = ["AddCommitStatusAction"]
+__all__ = [
+    'AddCommitStatusAction'
+]
 
 
 class AddCommitStatusAction(BaseGithubAction):
@@ -15,7 +17,6 @@ class AddCommitStatusAction(BaseGithubAction):
         repo = user.get_repo(repo)
         commit = repo.get_commit(sha)
 
-        commit.create_status(
-            state=state, target_url=target_url, description=description, context=context
-        )
+        commit.create_status(state=state, target_url=target_url,
+                             description=description, context=context)
         return True

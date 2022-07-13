@@ -94,7 +94,7 @@ class BaseGithubAction(Action):
         else:
             token_name = "token_"
 
-        token = self.action_service.get_value(token_name + user, local=False, decrypt=True)
+        token = self.action_service.get_value(token_name + user)
 
         # if a token is not returned, try using reversing changes made by
         # GitHub Enterprise during LDAP sync'ing.
@@ -132,8 +132,8 @@ class BaseGithubAction(Action):
             r.raise_for_status()
         except requests.exceptions.HTTPError:
             raise Exception(
-                "ERROR: '{}'ing to '{}' - status code: {} payload: {} response: {}".format(
-                    method, url, r.status_code, json.dumps(payload), r.json()))
+                "ERROR: '{}'ing to '{}' - status code: {} payload: {}".format(
+                    method, url, r.status_code, json.dumps(payload)))
         except requests.exceptions.ConnectionError as e:
             raise Exception("Could not connect to: {} : {}".format(url, e))
         else:

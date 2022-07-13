@@ -28,31 +28,27 @@ class GetDeploymentStatusesAction(BaseGithubAction):
 
         payload = {"id": deployment_id}
 
-        responses = self._request(
-            "GET",
-            "/repos/{}/deployments/{}/statuses".format(repository, deployment_id),
-            payload,
-            self.token,
-            enterprise,
-        )
+        responses = self._request("GET",
+                                  "/repos/{}/deployments/{}/statuses".format(
+                                      repository, deployment_id),
+                                  payload,
+                                  self.token,
+                                  enterprise)
 
         results = []
         for response in responses:
             ts_created_at = time.mktime(
-                datetime.datetime.strptime(response["created_at"], "%Y-%m-%dT%H:%M:%SZ").timetuple()
-            )
+                datetime.datetime.strptime(
+                    response['created_at'],
+                    "%Y-%m-%dT%H:%M:%SZ").timetuple())
 
-            results.append(
-                {
-                    "creator": response["creator"]["login"],
-                    "id": response["id"],
-                    "description": response["description"],
-                    "state": response["state"],
-                    "target_url": response["target_url"],
-                    "created_at": response["created_at"],
-                    "updated_at": response["updated_at"],
-                    "ts_created_at": ts_created_at,
-                }
-            )
+            results.append({'creator': response['creator']['login'],
+                            'id': response['id'],
+                            'description': response['description'],
+                            'state': response['state'],
+                            'target_url': response['target_url'],
+                            'created_at': response['created_at'],
+                            'updated_at': response['updated_at'],
+                            'ts_created_at': ts_created_at})
 
         return results

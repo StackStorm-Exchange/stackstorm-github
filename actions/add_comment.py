@@ -1,6 +1,8 @@
 from lib.base import BaseGithubAction
 
-__all__ = ["AddCommentAction"]
+__all__ = [
+    'AddCommentAction'
+]
 
 
 class AddCommentAction(BaseGithubAction):

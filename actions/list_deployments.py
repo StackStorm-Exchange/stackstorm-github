@@ -22,26 +22,26 @@ class ListDeploymentsAction(BaseGithubAction):
         enterprise = self._is_enterprise(github_type)
 
         if api_user:
-            self.token = self._get_user_token(api_user, enterprise)
+            self.token = self._get_user_token(api_user,
+                                              enterprise)
 
-        response = self._request(
-            "GET", "/repos/{}/deployments".format(repository), None, self.token, enterprise
-        )
+        response = self._request("GET",
+                                 "/repos/{}/deployments".format(repository),
+                                 None,
+                                 self.token,
+                                 enterprise)
 
         for dep in response:
             results.append(
-                {
-                    "creator": dep["creator"]["login"],
-                    "statuses_url": dep["statuses_url"],
-                    "repository_url": dep["repository_url"],
-                    "ref": dep["ref"],
-                    "task": dep["task"],
-                    "payload": dep["payload"],
-                    "environment": dep["environment"],
-                    "description": dep["description"],
-                    "created_at": dep["created_at"],
-                    "updated_at": dep["updated_at"],
-                }
-            )
+                {'creator': dep['creator']['login'],
+                 'statuses_url': dep['statuses_url'],
+                 'repository_url': dep['repository_url'],
+                 'ref': dep['ref'],
+                 'task': dep['task'],
+                 'payload': dep['payload'],
+                 'environment': dep['environment'],
+                 'description': dep['description'],
+                 'created_at': dep['created_at'],
+                 'updated_at': dep['updated_at']})
 
         return results

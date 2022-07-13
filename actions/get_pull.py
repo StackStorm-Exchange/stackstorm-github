@@ -1,7 +1,9 @@
 from lib.base import BaseGithubAction
 from lib.formatters import pull_to_dict
 
-__all__ = ["GetPullAction"]
+__all__ = [
+    'GetPullAction'
+]
 
 
 class GetPullAction(BaseGithubAction):

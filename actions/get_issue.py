@@ -1,7 +1,9 @@
 from lib.base import BaseGithubAction
 from lib.formatters import issue_to_dict
 
-__all__ = ["GetIssueAction"]
+__all__ = [
+    'GetIssueAction'
+]
 
 
 class GetIssueAction(BaseGithubAction):

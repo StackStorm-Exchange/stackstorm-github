@@ -19,55 +19,46 @@ from lib.base import BaseGithubAction
 
 
 class CreateDeploymentAction(BaseGithubAction):
-    def run(
-        self,
-        api_user,
-        repository,
-        description,
-        payload,
-        github_type,
-        ref="master",
-        environment="production",
-        task="deploy",
-    ):
+    def run(self, api_user, repository, description, payload, github_type,
+            ref="master", environment="production", task="deploy"):
 
         enterprise = self._is_enterprise(github_type)
 
         if api_user:
-            self.token = self._get_user_token(api_user, enterprise)
+            self.token = self._get_user_token(api_user,
+                                              enterprise)
 
-        payload = {
-            "ref": ref,
-            "task": task,
-            "payload": payload,
-            "environment": environment,
-            "description": description,
-        }
+        payload = {"ref": ref,
+                   "task": task,
+                   "payload": payload,
+                   "environment": environment,
+                   "description": description}
 
-        response = self._request(
-            "POST", "/repos/{}/deployments".format(repository), payload, self.token, enterprise
-        )
+        response = self._request("POST",
+                                 "/repos/{}/deployments".format(repository),
+                                 payload,
+                                 self.token,
+                                 enterprise)
 
         ts_created_at = time.mktime(
-            datetime.datetime.strptime(response["created_at"], "%Y-%m-%dT%H:%M:%SZ").timetuple()
-        )
+            datetime.datetime.strptime(
+                response['created_at'],
+                "%Y-%m-%dT%H:%M:%SZ").timetuple())
 
-        results = {
-            "creator": response["creator"]["login"],
-            "id": response["id"],
-            "sha": response["sha"],
-            "url": response["url"],
-            "ref": response["ref"],
-            "task": response["task"],
-            "payload": response["payload"],
-            "environment": response["environment"],
-            "description": response["description"],
-            "statuses_url": response["statuses_url"],
-            "repository_url": response["repository_url"],
-            "created_at": response["created_at"],
-            "updated_at": response["updated_at"],
-            "ts_created_at": ts_created_at,
-        }
-        results["response"] = response
+        results = {'creator': response['creator']['login'],
+                   'id': response['id'],
+                   'sha': response['sha'],
+                   'url': response['url'],
+                   'ref': response['ref'],
+                   'task': response['task'],
+                   'payload': response['payload'],
+                   'environment': response['environment'],
+                   'description': response['description'],
+                   'statuses_url': response['statuses_url'],
+                   'repository_url': response['repository_url'],
+                   'created_at': response['created_at'],
+                   'updated_at': response['updated_at'],
+                   'ts_created_at': ts_created_at}
+        results['response'] = response
 
         return results
