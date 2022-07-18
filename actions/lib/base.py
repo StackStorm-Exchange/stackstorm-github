@@ -2,6 +2,7 @@ from github import Github
 import requests
 from bs4 import BeautifulSoup
 import json
+import logging
 
 from st2common.runners.base_action import Action
 
@@ -18,6 +19,7 @@ DEFAULT_API_URL = 'https://api.github.com'
 
 
 class BaseGithubAction(Action):
+
     def run(self, **kwargs):
         pass
 
@@ -70,6 +72,8 @@ class BaseGithubAction(Action):
         response = s.get(url)
         return response.json()
 
+    # Whether or not this execution is meant for enterprise github installation (on-premises)
+    # or online installations (in the cloud)
     def _is_enterprise(self, github_type):
 
         if github_type == "enterprise":
@@ -83,6 +87,8 @@ class BaseGithubAction(Action):
         else:
             raise ValueError("Default GitHub Invalid!")
 
+    # Github token will come from KV using this function.. and depending on whether
+    # it's for enterprise or not, it will return have either of the key prefix below
     def _get_user_token(self, user, enterprise):
         """
         Return a users GitHub OAuth Token, if it fails replace '-'
@@ -104,7 +110,15 @@ class BaseGithubAction(Action):
 
         return token
 
+    def _change_to_user_token_if_enterprise(self, api_user, github_type):
+        enterprise = self._is_enterprise(github_type)
+        if api_user:
+            self._change_to_user_token(api_user, enterprise)
+
+    # Changes the internal client used on this instance of action execution to
+    # the one matching the configuration for enterprise/online and user given here
     def _change_to_user_token(self, user, enterprise):
+        logging.debug("Changing github client for user [%s] and enterprise [%s]", user, enterprise)
         token = self._get_user_token(user, enterprise)
 
         if enterprise:
@@ -114,6 +128,7 @@ class BaseGithubAction(Action):
 
         return True
 
+    # Sends a generic HTTP/s request to the github endpoint
     def _request(self, method, uri, payload, token, enterprise):
         headers = {'Authorization': 'token {}'.format(token)}
 

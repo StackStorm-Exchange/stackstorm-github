@@ -32,3 +32,15 @@ parameters:
     type: "string"
     description: "The name of the branch you want the changes pulled into. This should be an existing branch on the current repository. You cannot submit a pull request to one repository that requests a merge to a base of another repository."
     required: true
+  api_user:
+    type: "string"
+    description: "The"
+    default: "{{action_context.api_user|default(None)}}"
+  github_type:
+    type: "string"
+    description: "The type of github installation to target, if unset will use the configured default."
+    default: ~
+    enum:
+      - enterprise
+      - online
+

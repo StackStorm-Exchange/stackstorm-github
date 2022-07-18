@@ -1,0 +1,28 @@
+---
+name: "get_branch"
+runner_type: "python-script"
+description: >
+  Gets branch details from a GitHub repository
+  Example:
+    st2 run github.get_branch repository="reponame" branch="branch_name" api_user="token_name"
+enabled: true
+entry_point: "get_branch.py"
+parameters:
+  api_user:
+    type: "string"
+    description: "The API user"
+    default: "{{action_context.api_user|default(None)}}"
+  repository:
+    type: "string"
+    description: "The full (Organization|User)/repository path"
+    required: true
+  branch:
+    type: "string"
+    description: "The name of the branch to fetch details for"
+  github_type:
+    type: "string"
+    description: "The type of github installation to target, if unset will use the configured default."
+    default: enterprise
+    enum:
+      - enterprise
+      - online
