@@ -13,7 +13,6 @@
 * Segure improvement on ``github.store_oauth_token.`` to encrypt de github token in web interface.
 * Add new ``github.create_branch``, ``github.get_branch``, ``github.delete_branch`` actions which allows user to create/get/delete a branch.
 
-
 ## 2.1.1
 
 * Bug fix (#43) where the sensor will throw an exception if no events are returned from the GitHub api.
