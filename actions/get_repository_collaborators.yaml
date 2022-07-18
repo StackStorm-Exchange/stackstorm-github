@@ -1,0 +1,46 @@
+---
+name: get_repository_collaborators
+runner_type: python-script
+pack: github
+description: >
+  List repository collaborators.
+  Example:
+    st2 run github.get_repository_collaborators owner="organization" repo="reponame" api_user="token_name"
+enabled: true
+entry_point: get_repository_collaborators.py
+parameters:
+  api_user:
+    type: "string"
+    description: "The API user"
+    default: "{{action_context.api_user|default(None)}}"
+  owner:
+    type: "string"
+    description: "The account owner of the repository. The name is not case sensitive."
+    required: true
+  repo:
+    type: "string"
+    description: "The name of the repository. The name is not case sensitive."
+    required: true
+  affiliation:
+    type: "string"
+    description: "Filter collaborators returned by their affiliation. outside means all outside collaborators of an organization-owned repository. direct means all collaborators with permissions to an organization-owned repository, regardless of organization membership status. all means all collaborators the authenticated user can see."
+    enum:
+      - "outside"
+      - "direct"
+      - "all"
+    default: "all" 
+  per_page:
+    type: "integer"
+    description: "The number of results per page (max 100)."
+    default: 30
+  page:
+    type: "integer"
+    description: "Page number of the results to fetch."
+    default: 1  
+  github_type:
+    type: "string"
+    description: "The type of github installation to target, if unset will use the configured default."
+    enum:
+      - "online"
+      - "enterprise"
+    default: "enterprise"

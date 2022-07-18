@@ -1,12 +1,17 @@
 # Changelog
 
 ## 2.2.0
-
+* Add new ``github.add_repository_collaborator`` action which allows user to add a collaborator to repository.
+* Add new ``github.check_user_repository_collaborator`` action which allows user to check if an user is a collaborator's repository.
+* Add new ``github.get_repository_collaborators`` action which allows user to list the collaborators of repository.
+* Add new ``github.add_update_repository_team`` action which allows user to add a team to repository.
+* Add new ``github.check_team_permissions_for_repository`` action which allows user to check if a team has access to repository.
 * Add new ``github.create_organization_repository`` action which allows user to create an organization repository.
 * Add new ``github.create_repository_authenticated_user`` action which allows user to create an user repository.
 * Add new ``github.create_repository_from_template`` action which allows user to create a repository from template.
 * Bug fix on ``github.store_oauth_token.`` to api save the token correctly so that it can be read later.
 * Segure improvement on ``github.store_oauth_token.`` to encrypt de github token in web interface.
+
 
 ## 2.1.1
 
