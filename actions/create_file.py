@@ -10,6 +10,12 @@ __all__ = [
 class CreateFileAction(BaseGithubAction):
     def run(self, user, repo, path, message, content, github_type, api_user,
             branch=None, committer=None, author=None, encoding=None):
+
+        enterprise = self._is_enterprise(github_type)
+
+        if api_user:
+            self.token = self._get_user_token(api_user, enterprise)
+
         self._change_to_user_token_if_enterprise(api_user, github_type)
         author, branch, committer = prep_github_params_for_file_ops(author,
                                                                     branch,
