@@ -8,9 +8,7 @@ __all__ = [
 
 class UpdateBranchProtectionAction(BaseGithubAction):
     def run(self, user, repo, branch, required_status_checks, enforce_admins,
-            required_pull_request_reviews, restrictions,
-            required_linear_history=False, allow_force_pushes=False,
-            allow_deletions=False):
+            required_pull_request_reviews, restrictions):
 
         user = self._client.get_user(user)
         repo = user.get_repo(repo)
