@@ -8,7 +8,7 @@ keywords:
   - git
   - scm
   - serverless
-version: 2.1.1
+version: 2.2.0
 python_versions:
   - "3"
 author : StackStorm, Inc.
