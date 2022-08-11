@@ -13,13 +13,26 @@
 # See the License for the specific language governing permissions and
 
 import yaml
+import json
 # from mock import MagicMock
+from lib.base import BaseGithubAction
 
 from st2tests.base import BaseActionTestCase
 
 
 class GitHubBaseActionTestCase(BaseActionTestCase):
     __test__ = False
+
+
+    
+
+    def _mock_request(self, method, uri, data, *args, **kwargs):
+        # Defaults to using old request :)
+        return self.oldRequest(method, uri, data, *args, **kwargs)
+
+    def tearDown(self):
+        super(GitHubBaseActionTestCase, self).tearDown()
+        BaseGithubAction._request = self.oldRequest
 
     def setUp(self):
         super(GitHubBaseActionTestCase, self).setUp()
@@ -29,8 +42,14 @@ class GitHubBaseActionTestCase(BaseActionTestCase):
         self._enterprise_default_config = self.load_yaml(
             'full-enterprise.yaml')
 
+        self.oldRequest = BaseGithubAction._request
+        BaseGithubAction._request = self._mock_request
+    
+
     def load_yaml(self, filename):
         return yaml.safe_load(self.get_fixture_content(filename))
+    def load_json(self, filename):
+        return json.loads(self.get_fixture_content(filename))
 
     @property
     def blank_config(self):

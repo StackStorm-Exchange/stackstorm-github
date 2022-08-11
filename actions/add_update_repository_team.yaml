@@ -45,4 +45,4 @@ parameters:
       - "admin"
       - "maintain"
       - "triage"
-    default: "push"
+    default: "pull"
