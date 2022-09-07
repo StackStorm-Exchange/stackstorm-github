@@ -37,10 +37,16 @@ def branch_protection_to_dict(branch_protection):
                 result[attr] = {}
                 for attr2 in required_pull_request_reviews_attributes:
                     if attr2 == 'dismissal_users':
-                        users = [user.login for user in req_pr_reviews.dismissal_users]
+                        if req_pr_reviews.dismissal_users is not None:
+                            users = [user.login for user in req_pr_reviews.dismissal_users]
+                        else:
+                            users = None
                         result[attr][attr2] = users
                     elif attr2 == 'dismissal_teams':
-                        teams = [team.slug for team in req_pr_reviews.dismissal_teams]
+                        if req_pr_reviews.dismissal_teams is not None:
+                            teams = [team.slug for team in req_pr_reviews.dismissal_teams]
+                        else:
+                            teams = None
                         result[attr][attr2] = teams
                     else:
                         result[attr][attr2] = getattr(req_pr_reviews, attr2)
