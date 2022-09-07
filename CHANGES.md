@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.1.3
+
+* Fix `update_branch_protection` action: dismissal users and teams can now be null in GitHub's API response.
+
+## 2.1.2
+
+* Fix `merge_pull` action where it was incorrectly assessing mergeability of the given PR. 
+
 ## 2.1.1
 
 * Bug fix (#43) where the sensor will throw an exception if no events are returned from the GitHub api.
