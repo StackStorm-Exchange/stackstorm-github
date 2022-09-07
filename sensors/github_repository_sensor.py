@@ -80,8 +80,10 @@ class GithubRepositorySensor(PollingSensor):
         # Assume a default value of 30. Better for the sensor to operate with some
         # default value in this case rather than raise an exception.
         count = self._config['repository_sensor'].get('count', 30)
+        repository_events = repository.get_events()
 
-        events = list(repository.get_events()[:count])
+        events = list(repository_events[:count]) \
+            if repository_events.totalCount > count else list(repository_events)
         events.sort(key=lambda _event: _event.id, reverse=False)
 
         last_event_id = self._get_last_id(name=name)
