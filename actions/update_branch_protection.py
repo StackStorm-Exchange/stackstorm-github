@@ -43,6 +43,11 @@ class UpdateBranchProtectionAction(BaseGithubAction):
             user_push_restrictions = restrictions['user_push_restrictions']
             team_push_restrictions = restrictions['team_push_restrictions']
 
+        if not dismissal_users:
+            dismissal_users = NotSet
+        if not dismissal_teams:
+            dismissal_teams = NotSet
+
         branch.edit_protection(strict=strict, contexts=contexts,
                                enforce_admins=enforce_admins,
                                dismissal_users=dismissal_users,
@@ -64,9 +69,13 @@ if __name__ == '__main__':
     GITHUB_BRANCH = os.environ.get('GITHUB_BRANCH')
 
     # As produced by get_branch_protection action
-    BRANCH_PROTECTION = {'enforce_admins': True,
-                         'required_pull_request_reviews': None,
-                         'required_status_checks': {'contexts': [], 'strict': True},
+    BRANCH_PROTECTION = {'enforce_admins': False,
+                         'required_pull_request_reviews': {'dismiss_stale_reviews': False,
+                                                           'dismissal_teams': None,
+                                                           'dismissal_users': None,
+                                                           'require_code_owner_reviews': False,
+                                                           'required_approving_review_count': 0},
+                         'required_status_checks': None,
                          'restrictions': None
                          }
 
