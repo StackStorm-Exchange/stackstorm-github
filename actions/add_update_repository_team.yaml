@@ -31,11 +31,10 @@ parameters:
     required: true
   github_type:
     type: "string"
-    description: "The type of github installation to target, if unset will use the configured default."
+    description: "The type of github API to target, if unset will use the configured pack default. Enterprise means self-hosted API, e.g. github.your-company.com. Online means api.github.com"
     enum:
-      - "online"
-      - "enterprise"
-    default: "enterprise"
+      - enterprise
+      - online
   permission:
     type: "string"
     description: "The permission to grant the team on this repository. In addition to the enumerated values, you can also specify a custom repository role name, if the owning organization has defined any. If no permission is specified, the team's permission attribute will be used to determine what permission to grant the team on this repository."

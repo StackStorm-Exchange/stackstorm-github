@@ -26,11 +26,10 @@ parameters:
     default: "{{action_context.api_user|default(None)}}"
   github_type:
     type: "string"
-    description: "The type of github installation to target, if unset will use the configured default."
+    description: "The type of github API to target, if unset will use the configured pack default. Enterprise means self-hosted API, e.g. github.your-company.com. Online means api.github.com"
     enum:
-      - "online"
-      - "enterprise"
-    default: "enterprise"
+      - enterprise
+      - online
   # Call-specific parameters :)
   environment:
     type: string

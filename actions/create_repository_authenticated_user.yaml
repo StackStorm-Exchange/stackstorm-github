@@ -26,11 +26,10 @@ parameters:
     description: "A short description of the repository."
   github_type:
     type: "string"
-    description: "The type of github installation to target, if unset will use the configured default."
+    description: "The type of github API to target, if unset will use the configured pack default. Enterprise means self-hosted API, e.g. github.your-company.com. Online means api.github.com"
     enum:
-      - "online"
-      - "enterprise"
-    default: "online"
+      - enterprise
+      - online
   homepage:
     type: "string"
     description: "A URL with more information about the repository."
