@@ -5,7 +5,7 @@ pack: github
 description: >
   Check team permissions for a repository.
   Example:
-    st2 run github.check_team_permissions_for_repository  organization="organization" owner="owner" repo="reponame" team_slug="team_id" api_user="token_name"
+    st2 run github.check_team_permissions_for_repository  org="organization" owner="owner" repo="reponame" team_slug="team_id" api_user="token_name"
 enabled: true
 entry_point: check_team_permissions_for_repository.py
 parameters:
