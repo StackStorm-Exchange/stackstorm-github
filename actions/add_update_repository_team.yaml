@@ -5,7 +5,7 @@ pack: github
 description: >
   Add or update repository team.
   Example:
-    st2 run github.add_update_repository_team  organization="organization" owner="owner" repo="reponame" team_slug="team_id" api_user="token_name"
+    st2 run github.add_update_repository_team  org="organization" owner="owner" repo="reponame" team_slug="team_id" api_user="token_name"
 enabled: true
 entry_point: add_update_repository_team.py
 parameters:

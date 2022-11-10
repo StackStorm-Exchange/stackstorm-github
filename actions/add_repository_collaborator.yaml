@@ -15,7 +15,7 @@ parameters:
     default: "{{action_context.api_user|default(None)}}"
   owner:
     type: "string"
-    description: "The account owner of the repository. The name is not case sensitive.."
+    description: "The account owner of the repository. The name is not case sensitive."
     required: true
   repo:
     type: "string"
