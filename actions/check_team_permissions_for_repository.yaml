@@ -3,7 +3,7 @@ name: check_team_permissions_for_repository
 runner_type: python-script
 pack: github
 description: >
-  Check team permissions for a repository.
+  Check if the given team has access to a repository.
   Example:
     st2 run github.check_team_permissions_for_repository  org="organization" owner="owner" repo="reponame" team_slug="team_id" api_user="token_name"
 enabled: true
