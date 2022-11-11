@@ -4,7 +4,7 @@ runner_type: "python-script"
 description: >
   Gets branch details from a GitHub repository
   Example:
-    st2 run github.get_branch repository="reponame" branch="branch_name" api_user="token_name"
+    st2 run github.get_branch repository="owner/reponame" branch="branch_name" api_user="token_name"
 enabled: true
 entry_point: "get_branch.py"
 parameters:
