@@ -98,6 +98,7 @@ StackStorm webhook handler.
 
 * ``add_comment`` - Add comment to the provided issue / pull request.
 * ``add_repository_collaborator`` - Add a collaborator to repository.
+* ``add_update_repository_environment`` - Add a deployment environment to a repository.
 * ``add_status`` - Add commit status to the provided commit.
 * ``add_update_repository_team`` - Add/Update a team to repository.
 * ``create_branch`` - Create new branch.
