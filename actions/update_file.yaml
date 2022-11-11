@@ -51,7 +51,7 @@ parameters:
     required: false
   api_user:
     type: "string"
-    description: "The"
+    description: "The API user"
     default: "{{action_context.api_user|default(None)}}"
   github_type:
     type: "string"

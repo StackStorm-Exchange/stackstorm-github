@@ -3,7 +3,7 @@ name: create_repository_from_template
 runner_type: python-script
 pack: github
 description: >
-  Creates a Github repository fot an organization.
+  Creates a Github repository from a template repository
   Example:
     st2 run github.create_repository_from_template owner="organization" name="reponame" description="test github.create_repository" private=true template_owner="gittemplate" template_repo="gitrepo" api_user="token_name"
 enabled: true

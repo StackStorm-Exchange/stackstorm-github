@@ -3,7 +3,7 @@ name: create_repository_authenticated_user
 runner_type: python-script
 pack: github
 description: >
-  Creates a Github repository fot the authenticated user.
+  Creates a Github repository for the authenticated user.
   Example:
     st2 run github.create_repository_authenticated_user user="user" name="reponame" description="test github.create_repository" private=false api_user="token_name"
 enabled: true
