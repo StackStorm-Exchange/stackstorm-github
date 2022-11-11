@@ -6,7 +6,7 @@ __all__ = [
 ]
 
 class CreateRepositoryAuthenticatedUserAction(BaseGithubAction):
-    def run(self, api_user, user, name, description, github_type, homepage, private, 
+    def run(self, api_user, name, description, github_type, homepage, private, 
             has_issues, has_projects, has_wiki, team_id, auto_init, gitignore_template, 
             license_template, allow_squash_merge, allow_merge_commit, allow_rebase_merge, 
             allow_auto_merge, delete_branch_on_merge, has_downloads, is_template, ):
@@ -16,8 +16,7 @@ class CreateRepositoryAuthenticatedUserAction(BaseGithubAction):
         if api_user:
             self.token = self._get_user_token(api_user, enterprise)
 
-        payload = { "user": user,
-                    "name": name,
+        payload = { "name": name,
                     "description": description,
                     "homepage": homepage,
                     "private": private,

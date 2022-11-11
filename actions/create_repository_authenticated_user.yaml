@@ -5,7 +5,7 @@ pack: github
 description: >
   Creates a Github repository for the authenticated user.
   Example:
-    st2 run github.create_repository_authenticated_user user="user" name="reponame" description="test github.create_repository" private=false api_user="token_name"
+    st2 run github.create_repository_authenticated_user name="reponame" description="test github.create_repository" private=false api_user="token_name"
 enabled: true
 entry_point: create_repository_authenticated_user.py
 parameters:
@@ -13,10 +13,6 @@ parameters:
     type: "string"
     description: "The API user"
     default: "{{action_context.api_user|default(None)}}"
-  user:
-    type: "string"
-    description: "GitHub User."
-    required: true
   name:
     type: "string"
     description: "The name of the repository."
