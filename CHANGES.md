@@ -10,8 +10,8 @@
 * Add new ``github.create_repository_authenticated_user`` action which allows user to create a user repository.
 * Add new ``github.create_repository_from_template`` action which allows user to create a repository from a template repository.
 * Add new ``github.add_update_repository_environment`` action which allows user to create a repository deployment environment.
-* Bug fix on ``github.store_oauth_token.`` to save the token correctly so that it can be read later.
-* Security improvement on ``github.store_oauth_token.`` to hide the github token in web interface.
+* Bug fix on ``github.store_oauth_token`` to save the token correctly so that it can be read later.
+* Security improvement on ``github.store_oauth_token`` to encrypt the github token and hide it in web interface.
 * Add new ``github.create_branch``, ``github.get_branch``, ``github.delete_branch`` actions which allow user to create/get/delete a branch.
 * Add token to ``github.create_file``, ``github.create_pull``, ``github.update_file``.
 
