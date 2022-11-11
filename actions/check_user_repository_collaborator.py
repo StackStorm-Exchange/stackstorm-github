@@ -19,14 +19,14 @@ class CheckIfUserIsRepositoryCollaborator(BaseGithubAction):
                           {},
                           self.token,
                           enterprise)
-            results = {'response': "The user {} is a Collaborator".format(username)}
+            results = {'response': f"The user {username} is a Collaborator"}
         except OSError as err:
             raise err
         except ValueError as err:
             raise err
         except Exception as err:
             if str(err).find("404"):
-                results = {'response': "is not a Collaborator or not found"}
+                results = {'response': f"The user {username} is not a Collaborator or not found"}
             else:
                 raise err
         return results
