@@ -29,7 +29,7 @@ class CheckTeamPermissionsForRepository(BaseGithubAction):
             raise err
         except Exception as err:
             if str(err).find("404"):
-                results = {'response': "The team don't have access to the repository or not found"}
+                results = {'response': "The team doesn't have access to the repository or was not found"}
             else:
                 raise err
         return results
