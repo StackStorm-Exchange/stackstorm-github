@@ -1,0 +1,43 @@
+---
+name: add_repository_collaborator
+runner_type: python-script
+pack: github
+description: >
+  Add a repository collaborator.
+  Example:
+    st2 run github.add_repository_collaborator owner="organization" repo="reponame" username="collaborator" api_user="token_name"
+enabled: true
+entry_point: add_repository_collaborator.py
+parameters:
+  api_user:
+    type: "string"
+    description: "The API user"
+    default: "{{action_context.api_user|default(None)}}"
+  owner:
+    type: "string"
+    description: "The account owner of the repository. The name is not case sensitive."
+    required: true
+  repo:
+    type: "string"
+    description: "The name of the repository. The name is not case sensitive."
+    required: true
+  username:
+    type: "string"
+    description: "The handle for the GitHub user account."
+    required: true
+  github_type:
+    type: "string"
+    description: "The type of github API to target, if unset will use the configured pack default. Enterprise means self-hosted API, e.g. github.your-company.com. Online means api.github.com"
+    enum:
+      - enterprise
+      - online
+  permission:
+    type: "string"
+    description: "The permission to grant the collaborator. Only valid on organization-owned repositories. In addition to the enumerated values, you can also specify a custom repository role name, if the owning organization has defined any."
+    enum:
+      - "pull"
+      - "push"
+      - "admin"
+      - "maintain"
+      - "triage"
+    default: "push"

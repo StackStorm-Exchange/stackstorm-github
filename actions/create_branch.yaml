@@ -1,9 +1,12 @@
 ---
-name: "create_deployment"
+name: "create_branch"
 runner_type: "python-script"
-description: "Create a new deployment for a GitHub repository"
+description: >
+  Create a new branch for a GitHub repository
+  Example:
+    st2 run github.create_branch repository="owner/reponame" origin_ref="heads/<branch>" new_branch="branch_name" api_user="token_name"
 enabled: true
-entry_point: "create_deployment.py"
+entry_point: "create_branch.py"
 parameters:
   api_user:
     type: "string"
@@ -13,22 +16,13 @@ parameters:
     type: "string"
     description: "The full (Organization|User)/repository path"
     required: true
-  ref:
+  origin_ref:
     type: "string"
-    description: "The branch, tag, or SHA to deploy."
-    default: "master"
-  environment:
+    description: "The current reference to branch from (e.g. heads/master, heads/main)"
+    default: "heads/master"
+  new_branch:
     type: "string"
-    description: "Deploy to this environment."
-    default: "production"
-  description:
-    type: "string"
-    description: "Optional short description."
-    default: ""
-  payload:
-    type: "string"
-    description: "Optional JSON payload with extra information about the deployment."
-    default: ""
+    description: "The branch to be created from the given ref"
   github_type:
     type: "string"
     description: "The type of github API to target, if unset will use the configured pack default. Enterprise means self-hosted API, e.g. github.your-company.com. Online means api.github.com"

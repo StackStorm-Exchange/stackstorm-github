@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.2.0
+* Add new ``github.add_repository_collaborator`` action which allows user to add a collaborator to repository.
+* Add new ``github.check_user_repository_collaborator`` action which allows user to check if an user is a collaborator's repository.
+* Add new ``github.get_repository_collaborators`` action which allows user to list the collaborators of repository.
+* Add new ``github.add_update_repository_team`` action which allows user to add a team to repository.
+* Add new ``github.check_team_permissions_for_repository`` action which allows user to check if a team has access to repository.
+* Add new ``github.create_organization_repository`` action which allows user to create an organization repository.
+* Add new ``github.create_repository_authenticated_user`` action which allows user to create a user repository.
+* Add new ``github.create_repository_from_template`` action which allows user to create a repository from a template repository.
+* Add new ``github.add_update_repository_environment`` action which allows user to create a repository deployment environment.
+* Bug fix on ``github.store_oauth_token`` to save the token correctly so that it can be read later.
+* Security improvement on ``github.store_oauth_token`` to encrypt the github token and hide it in web interface.
+* Add new ``github.create_branch``, ``github.get_branch``, ``github.delete_branch`` actions which allow user to create/get/delete a branch.
+* Add token to ``github.create_file``, ``github.create_pull``, ``github.update_file``.
+
 ## 2.1.3
 
 * Fix `update_branch_protection` action: dismissal users and teams can now be null in GitHub's API response.

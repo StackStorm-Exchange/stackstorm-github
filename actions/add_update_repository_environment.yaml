@@ -1,0 +1,78 @@
+---
+name: add_update_repository_environment
+# https://docs.github.com/en/enterprise-server@3.2/rest/deployments/environments
+runner_type: python-script
+pack: github
+description: >
+  Add or update a repository environment.
+  Example:
+    st2 run github.add_update_repository_environment owner="owner" repo="reponame" environment="test" reviewers='[{"type": "Team", "name": "test-team"}]' api_user="test" github_type=online
+enabled: true
+entry_point: add_update_repository_environment.py
+parameters:
+  # Repository parameters
+  owner:
+    type: "string"
+    description: "The account owner of the repository. The name is not case sensitive."
+    required: true
+  repo:
+    type: "string"
+    description: "The name of the repository. The name is not case sensitive."
+    required: true
+  # Authentication parameters
+  api_user:
+    type: "string"
+    description: "The API user"
+    default: "{{action_context.api_user|default(None)}}"
+  github_type:
+    type: "string"
+    description: "The type of github API to target, if unset will use the configured pack default. Enterprise means self-hosted API, e.g. github.your-company.com. Online means api.github.com"
+    enum:
+      - enterprise
+      - online
+  # Call-specific parameters :)
+  environment:
+    type: string
+    description: "The name of the environment"
+    required: true
+  wait_timer:
+    type: number
+    description: "The amount of time to delay a job after the job is initially triggered. The time (in minutes) must be an integer between 0 and 43,200 (30 days)."
+    required: false
+    default: 0
+  reviewers:
+    type: array
+    default: []
+    description: "The people or teams that may review jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed."
+    required: false
+    items:
+      type: object
+      properties:
+        type:
+          type: string
+          required: true
+          enum:
+          - "User"
+          - "Team"
+        id:
+          # Note, you MUST provide a id if the type is User.. otherwise you may provide the team name, and the script
+          # will detect the ID
+          type: number
+          required: false
+        name:
+          type: string
+          required: false
+  deployment_branch_policy:
+    type: object
+    description: "The type of deployment branch policy for this environment. To allow all branches to deploy, set to null."
+    required: false
+    default: null
+    properties:
+      protected_branches:
+        type: boolean
+        required: true
+        description: Whether only branches with branch protection rules can deploy to this environment. If protected_branches is true, custom_branch_policies must be false; if protected_branches is false, custom_branch_policies must be true.
+      custom_branch_policies:
+        type: boolean
+        required: true
+        description: Whether only branches that match the specified name patterns can deploy to this environment. If custom_branch_policies is true, protected_branches must be false; if custom_branch_policies is false, protected_branches must be true.
