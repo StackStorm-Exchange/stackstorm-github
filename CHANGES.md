@@ -7,13 +7,21 @@
 * Add new ``github.add_update_repository_team`` action which allows user to add a team to repository.
 * Add new ``github.check_team_permissions_for_repository`` action which allows user to check if a team has access to repository.
 * Add new ``github.create_organization_repository`` action which allows user to create an organization repository.
-* Add new ``github.create_repository_authenticated_user`` action which allows user to create an user repository.
-* Add new ``github.create_repository_from_template`` action which allows user to create a repository from template.
+* Add new ``github.create_repository_authenticated_user`` action which allows user to create a user repository.
+* Add new ``github.create_repository_from_template`` action which allows user to create a repository from a template repository.
 * Add new ``github.add_update_repository_environment`` action which allows user to create a repository deployment environment.
-* Bug fix on ``github.store_oauth_token.`` to api save the token correctly so that it can be read later.
-* Security improvement on ``github.store_oauth_token.`` to encrypt the github token in web interface.
-* Add new ``github.create_branch``, ``github.get_branch``, ``github.delete_branch`` actions which allows user to create/get/delete a branch.
+* Bug fix on ``github.store_oauth_token.`` to save the token correctly so that it can be read later.
+* Security improvement on ``github.store_oauth_token.`` to hide the github token in web interface.
+* Add new ``github.create_branch``, ``github.get_branch``, ``github.delete_branch`` actions which allow user to create/get/delete a branch.
 * Add token to ``github.create_file``, ``github.create_pull``, ``github.update_file``.
+
+## 2.1.3
+
+* Fix `update_branch_protection` action: dismissal users and teams can now be null in GitHub's API response.
+
+## 2.1.2
+
+* Fix `merge_pull` action where it was incorrectly assessing mergeability of the given PR. 
 
 ## 2.1.1
 
