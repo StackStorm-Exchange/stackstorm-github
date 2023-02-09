@@ -15,8 +15,8 @@
 from lib.base import BaseGithubAction
 
 
-class UpdateOpenCodeScanningAlert(BaseGithubAction):
-    def run(self, api_user, user,repository, github_type, alert_number, state, dismissed_reason=None, dismissed_comment=None):
+class UpdateSecurityAlert(BaseGithubAction):
+    def run(self, api_user, user,repository, github_type, alert_type,alert_number, state, dismissed_reason=None, dismissed_comment=None):
         enterprise = self._is_enterprise(github_type)
 
         if api_user:
@@ -32,7 +32,7 @@ class UpdateOpenCodeScanningAlert(BaseGithubAction):
             })
 
         response = self._request("PATCH",
-            "/repos/{}/{}/code-scanning/alerts/{}".format(user,repository,alert_number),
+            "/repos/{}/{}/{}/alerts/{}".format(user,repository,alert_type,alert_number),
             payload,
             self.token,
             enterprise)
