@@ -29,7 +29,7 @@ class ListOpenCodeScanningAlerts(BaseGithubAction):
         alerts = []
         while paginate:
             response = self._request("GET",
-                                    "/repos/{}/{}/code-scanning/alerts?state=open&per_page=10&page={}".format(user,repository,page),
+                                    "/repos/{}/{}/code-scanning/alerts?state=open&per_page=20&page={}".format(user,repository,page),
                                     None,
                                     self.token,
                                     enterprise)

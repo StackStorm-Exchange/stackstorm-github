@@ -1,0 +1,41 @@
+---
+name: "update_open_code_scanning_alert"
+runner_type: "python-script"
+description: "Update Code Scanning Alert for a GitHub repository"
+enabled: true
+entry_point: "update_open_code_scanning_alert.py"
+parameters:
+  api_user:
+    type: "string"
+    description: "The API user"
+    default: "{{action_context.api_user|default(None)}}"
+  user:
+      type: "string"
+      description: "User / organization name."
+      required: true
+  repository:
+    type: "string"
+    description: "The full (Organization|User)/repository path"
+    required: true
+  github_type:
+    type: "string"
+    description: "The type of github installation to target, if unset will use the configured default."
+    default: ~
+  alert_number:
+    type: "string"
+    description: "The alert number"
+    required: true
+  state:
+    type: "string"
+    description: "The state to update."
+    enum:
+    - open
+    - dismissed
+  dismissed_reason:
+    type: "string"
+    description: "The reason for dismissal, if the state is dismissed"
+    default: ~
+  dismissed_comment:
+    type: "string"
+    description: "Comment for any additional information for the dismissal"
+    default: ~
