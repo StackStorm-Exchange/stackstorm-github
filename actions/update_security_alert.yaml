@@ -39,7 +39,7 @@ parameters:
     - dismissed
   dismissed_reason:
     type: "string"
-    description: "The reason for dismissal, if the state is dismissed"
+    description: "The reason for dismissal, if the state is dismissed.  For dependabot: one of fix_started, inaccurate, no_bandwidth, not_used, tolerable_risk.  For code_scanning: one of false positive, won't fix, used in tests."
     default: ~
   dismissed_comment:
     type: "string"

@@ -38,9 +38,9 @@ class UpdateSecurityAlert(BaseGithubAction):
             enterprise)
 
         results = {
-            "alert_number" : response['number'],
-            "state": response['state'],
-            "html_url": response['html_url']
+            'alert_number' : response['number'],
+            'state': response['state'],
+            'html_url': response['html_url']
         }
 
         return results
