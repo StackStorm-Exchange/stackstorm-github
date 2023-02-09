@@ -33,8 +33,8 @@ class AddUpdateRepositoryEnvironmentAction(BaseGithubAction):
                 del reviewer["name"]
                 reviewer["id"] = self._get_team_id(enterprise, owner, name)
             elif type == "User" and name:
-                raise NotImplementedError("Providing reviewer of type user without \
-                     ID is not implemented!")
+                raise NotImplementedError("Providing reviewer of type user without " \
+                     "ID is not implemented!")
 
         payload = {
             "wait_timer": int(wait_timer),
