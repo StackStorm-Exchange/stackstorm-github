@@ -16,7 +16,8 @@ from lib.base import BaseGithubAction
 
 
 class UpdateSecurityAlert(BaseGithubAction):
-    def run(self, api_user, user, repository, github_type, alert_type, alert_number, state, dismissed_reason = None, dismissed_comment = None):
+    def run(self, api_user, user, repository, github_type, alert_type,
+    alert_number, state, dismissed_reason=None, dismissed_comment=None):
         enterprise = self._is_enterprise(github_type)
 
         if api_user:
@@ -32,13 +33,13 @@ class UpdateSecurityAlert(BaseGithubAction):
             })
 
         response = self._request("PATCH",
-            "/repos/{}/{}/{}/alerts/{}".format(user,repository,alert_type,alert_number),
+            "/repos/{}/{}/{}/alerts/{}".format(user, repository, alert_type, alert_number),
             payload,
             self.token,
             enterprise)
 
         results = {
-            'alert_number' : response['number'],
+            'alert_number': response['number'],
             'state': response['state'],
             'html_url': response['html_url']
         }
