@@ -13,7 +13,7 @@ class AddUpdateRepositoryEnvironmentAction(BaseGithubAction):
                                 f"/orgs/{org}/teams/{name}",
                                 None,
                                 self.token,
-                                enterprise) 
+                                enterprise)
         self.logger.debug("Found ID [%d] for name [%s]", response["id"], name)
         return response["id"]
 
@@ -33,7 +33,8 @@ class AddUpdateRepositoryEnvironmentAction(BaseGithubAction):
                 del reviewer["name"]
                 reviewer["id"] = self._get_team_id(enterprise, owner, name)
             elif type == "User" and name:
-                raise NotImplementedError("Providing reviewer of type user without ID is not implemented!")
+                raise NotImplementedError("Providing reviewer of type user without \
+                     ID is not implemented!")
 
         payload = {
             "wait_timer": int(wait_timer),
@@ -42,7 +43,7 @@ class AddUpdateRepositoryEnvironmentAction(BaseGithubAction):
         }
 
         self.logger.info(
-            "Adding/Updating environment [%s] with parameters [%s] for repo [%s/%s] with user [%s]", 
+            "Adding/Updating environment [%s] with parameters [%s] for repo [%s/%s] with user [%s]",
             environment, payload, owner, repo, api_user)
 
         try:
