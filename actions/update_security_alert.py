@@ -16,19 +16,19 @@ from lib.base import BaseGithubAction
 
 
 class UpdateSecurityAlert(BaseGithubAction):
-    def run(self, api_user, user,repository, github_type, alert_type,alert_number, state, dismissed_reason=None, dismissed_comment=None):
+    def run(self, api_user, user, repository, github_type, alert_type, alert_number, state, dismissed_reason = None, dismissed_comment = None):
         enterprise = self._is_enterprise(github_type)
 
         if api_user:
             self.token = self._get_user_token(api_user,
                                               enterprise)
         payload = {
-            "state": state
+            'state': state
         }
         if state == 'dismissed':
             payload.update({
-                "dismissed_reason": dismissed_reason,
-                "dismissed_comment": dismissed_comment
+                'dismissed_reason': dismissed_reason,
+                'dismissed_comment': dismissed_comment
             })
 
         response = self._request("PATCH",

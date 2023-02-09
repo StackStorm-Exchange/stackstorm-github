@@ -16,7 +16,7 @@ from lib.base import BaseGithubAction
 
 
 class ListOpenCodeScanningAlerts(BaseGithubAction):
-    def run(self, api_user, user,repository, github_type):
+    def run(self, api_user, user, repository, github_type):
         results = []
 
         enterprise = self._is_enterprise(github_type)
@@ -24,12 +24,13 @@ class ListOpenCodeScanningAlerts(BaseGithubAction):
         if api_user:
             self.token = self._get_user_token(api_user,
                                               enterprise)
-        page=1
+        page = 1
         paginate = True
         alerts = []
         while paginate:
             response = self._request("GET",
-                                    "/repos/{}/{}/code-scanning/alerts?state=open&per_page=20&page={}".format(user,repository,page),
+                                    "/repos/{}/{}/code-scanning/alerts?state=open&per_page=20&page={}"
+                                    .format(user, repository, page),
                                     None,
                                     self.token,
                                     enterprise)
@@ -38,7 +39,6 @@ class ListOpenCodeScanningAlerts(BaseGithubAction):
             else:
                 alerts += response
                 page += 1
-
 
         for alert in alerts:
             results.append(
