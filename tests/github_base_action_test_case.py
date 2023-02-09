@@ -23,9 +23,6 @@ from st2tests.base import BaseActionTestCase
 class GitHubBaseActionTestCase(BaseActionTestCase):
     __test__ = False
 
-
-    
-
     def _mock_request(self, method, uri, data, *args, **kwargs):
         # Defaults to using old request :)
         return self.oldRequest(method, uri, data, *args, **kwargs)
@@ -44,10 +41,10 @@ class GitHubBaseActionTestCase(BaseActionTestCase):
 
         self.oldRequest = BaseGithubAction._request
         BaseGithubAction._request = self._mock_request
-    
 
     def load_yaml(self, filename):
         return yaml.safe_load(self.get_fixture_content(filename))
+
     def load_json(self, filename):
         return json.loads(self.get_fixture_content(filename))
 

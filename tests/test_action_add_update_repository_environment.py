@@ -15,10 +15,6 @@
 # from mock import MagicMock
 
 from github_base_action_test_case import GitHubBaseActionTestCase
-import mock
-import requests
-import json
-
 
 from add_update_repository_environment import AddUpdateRepositoryEnvironmentAction
 
