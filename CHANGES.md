@@ -1,4 +1,8 @@
 # Changelog
+## 2.3.0
+* Add new ``github.update_security_alert`` action to update either dependabot or code scanning alerts.
+* Add new ``github.list_open_code_scanning_alerts`` action to list open code scanning alerts for a repository.
+* Add new ``github.list_open_dependabot_alerts`` action to list open dependabot alerts for a repository.
 
 ## 2.2.0
 * Add new ``github.add_repository_collaborator`` action which allows user to add a collaborator to repository.
