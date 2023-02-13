@@ -1,0 +1,47 @@
+---
+name: "update_security_alert"
+runner_type: "python-script"
+description: "Update Code Scanning or Dependabot Alert for a GitHub repository"
+enabled: true
+entry_point: "update_security_alert.py"
+parameters:
+  api_user:
+    type: "string"
+    description: "The API user"
+    default: "{{action_context.api_user|default(None)}}"
+  user:
+      type: "string"
+      description: "User / organization name."
+      required: true
+  repository:
+    type: "string"
+    description: "The full (Organization|User)/repository path"
+    required: true
+  github_type:
+    type: "string"
+    description: "The type of github installation to target, if unset will use the configured default."
+    default: ~
+  alert_type:
+    type: "string"
+    description: "The type of alert"
+    enum:
+    - code_scanning
+    - dependabot
+  alert_number:
+    type: "string"
+    description: "The alert number"
+    required: true
+  state:
+    type: "string"
+    description: "The state to update."
+    enum:
+    - open
+    - dismissed
+  dismissed_reason:
+    type: "string"
+    description: "The reason for dismissal, if the state is dismissed.  For dependabot: one of fix_started, inaccurate, no_bandwidth, not_used, tolerable_risk.  For code_scanning: one of false positive, won't fix, used in tests."
+    default: ~
+  dismissed_comment:
+    type: "string"
+    description: "Comment for any additional information for the dismissal"
+    default: ~

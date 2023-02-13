@@ -1,0 +1,23 @@
+---
+name: "list_open_dependabot_alerts"
+runner_type: "python-script"
+description: "List Dependabot Alerts for a GitHub repository"
+enabled: true
+entry_point: "list_open_dependabot_alerts.py"
+parameters:
+  api_user:
+    type: "string"
+    description: "The API user"
+    default: "{{action_context.api_user|default(None)}}"
+  user:
+      type: "string"
+      description: "User / organization name."
+      required: true
+  repository:
+    type: "string"
+    description: "The full (Organization|User)/repository path"
+    required: true
+  github_type:
+    type: "string"
+    description: "The type of github installation to target, if unset will use the configured default."
+    default: ~

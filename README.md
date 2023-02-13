@@ -97,16 +97,28 @@ StackStorm webhook handler.
 ## Actions
 
 * ``add_comment`` - Add comment to the provided issue / pull request.
+* ``add_repository_collaborator`` - Add a collaborator to repository.
+* ``add_update_repository_environment`` - Add a deployment environment to a repository.
 * ``add_status`` - Add commit status to the provided commit.
+* ``add_update_repository_team`` - Add/Update a team to repository.
+* ``create_branch`` - Create new branch.
 * ``create_file`` - Create new file.
 * ``create_issue`` - Create a new issue.
+* ``create_repository_authenticated_user`` - Create an user repository.
+* ``create_repository_from_template`` - Create a repository from template.
+* ``create_organization_repository`` - Create an organization repository.
 * ``create_pull`` - Create a new Pull Request.
+* ``check_team_permissions_for_repository`` - Check if a team has access to repository.
+* ``check_user_repository_collaborator`` - Check if an user is a collaborator's repository.
+* ``delete_branch`` - Remove branch.
 * ``delete_branch_protection`` - Remove branch protection settings.
+* ``get_branch`` - Get branch.
 * ``get_branch_protection`` - Get branch protection settings.
 * ``get_contents`` - Get repository or file contents.
 * ``get_issue`` - Retrieve information about a particular issue. Note: You
   only need to specify authentication token in the config if you use this
   action with a private repository.
+* ``get_repository_collaborators`` - List the collaborators of repository.
 * ``list_issues`` - List all the issues for a particular repo (includes pull
   requests since pull requests are just a special type of issues).
 * ``list_pulls`` - List all pull requests for a particular repo.

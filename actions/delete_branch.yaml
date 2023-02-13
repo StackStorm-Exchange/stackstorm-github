@@ -1,0 +1,27 @@
+---
+name: "delete_branch"
+runner_type: "python-script"
+description: >
+  Deletes a branch from a GitHub repository
+  Example:
+    st2 run github.delete_branch repository="owner/reponame" branch="branch_name" api_user="token_name"
+enabled: true
+entry_point: "delete_branch.py"
+parameters:
+  api_user:
+    type: "string"
+    description: "The API user"
+    default: "{{action_context.api_user|default(None)}}"
+  repository:
+    type: "string"
+    description: "The full (Organization|User)/repository path"
+    required: true
+  branch:
+    type: "string"
+    description: "The branch to be deleted from the given ref"
+  github_type:
+    type: "string"
+    description: "The type of github API to target, if unset will use the configured pack default. Enterprise means self-hosted API, e.g. github.your-company.com. Online means api.github.com"
+    enum:
+      - enterprise
+      - online

@@ -33,7 +33,8 @@ class StoreOauthTokenActionTestCase(GitHubBaseActionTestCase):
 
         self.assertEqual(results, expected)
         self.assertEqual("foo",
-                         action.action_service.get_value("token_octocat"))
+                         action.action_service.get_value("token_octocat",
+                         local=False, decrypt=True))
 
     def test_run_uses_enterprise(self):
         expected = {'github_type': "enterprise"}
@@ -45,7 +46,8 @@ class StoreOauthTokenActionTestCase(GitHubBaseActionTestCase):
 
         self.assertEqual(results, expected)
         self.assertEqual("foo",
-                         action.action_service.get_value("token_enterprise_octocat"))
+                         action.action_service.get_value("token_enterprise_octocat",
+                         local=False, decrypt=True))
 
     def test_run_token_string_whitespace_start(self):
         expected = {'github_type': "online"}
@@ -57,7 +59,8 @@ class StoreOauthTokenActionTestCase(GitHubBaseActionTestCase):
 
         self.assertEqual(results, expected)
         self.assertEqual("foo",
-                         action.action_service.get_value("token_octocat"))
+                         action.action_service.get_value("token_octocat",
+                         local=False, decrypt=True))
 
     def test_run_token_string_whitespace_end(self):
         expected = {'github_type': "online"}
@@ -69,7 +72,8 @@ class StoreOauthTokenActionTestCase(GitHubBaseActionTestCase):
 
         self.assertEqual(results, expected)
         self.assertEqual("foo",
-                         action.action_service.get_value("token_octocat"))
+                         action.action_service.get_value("token_octocat",
+                         local=False, decrypt=True))
 
     def test_run_token_string_whitespace_both(self):
         expected = {'github_type': "online"}
@@ -81,4 +85,5 @@ class StoreOauthTokenActionTestCase(GitHubBaseActionTestCase):
 
         self.assertEqual(results, expected)
         self.assertEqual("foo",
-                         action.action_service.get_value("token_octocat"))
+                         action.action_service.get_value("token_octocat",
+                         local=False, decrypt=True))
