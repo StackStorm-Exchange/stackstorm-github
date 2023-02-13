@@ -48,7 +48,7 @@ class ListOpenCodeScanningAlerts(BaseGithubAction):
                  'updated_at': alert['updated_at'],
                  'tool_name': alert['tool']['name'],
                  'tool_version': alert['tool']['version'],
-                 'rule_severity': alert['rule'].get('security_severity_level','low'),
+                 'rule_severity': alert['rule'].get('security_severity_level', 'low'),
                  'rule_name': alert['rule']['name'],
                  'rule_description': alert['rule']['description'],
                  'html_url': alert['html_url']
