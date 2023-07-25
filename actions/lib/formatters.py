@@ -11,7 +11,6 @@ __all__ = [
     'user_to_dict',
     'contents_to_dict',
     'file_response_to_dict',
-    'decode_base64'
 ]
 
 
@@ -211,12 +210,8 @@ def contents_to_dict(contents, decode=False):
         elif item_type == 'submodule':
             data['submodule_git_url'] = item.submodule_git_url
         elif not directory:
-            encoding = item.encoding
-            content = item.content
-            data['encoding'] = encoding
-            if decode and encoding == 'base64':
-                content = decode_base64(content)
-            data['content'] = content
+            data['encoding'] = item.encoding
+            data['content'] = item.decoded_content.decode('utf-8') if decode else item.content
 
         data['size'] = item.size
         data['name'] = item.name
@@ -232,23 +227,6 @@ def contents_to_dict(contents, decode=False):
         return result[0]
     else:
         return result
-
-
-def decode_base64(data):
-    """Decode base64, padding being optional.
-
-    :param data: Base64 data as an ASCII byte string
-    :returns: The decoded byte string.
-
-    """
-    missing_padding = len(data) % 4
-    if missing_padding != 0:
-        data += b'=' * (4 - missing_padding)
-
-    import base64
-    data = data.encode("utf-8")
-    data = base64.b64decode(data).decode("utf-8")
-    return data
 
 
 def file_response_to_dict(response):
