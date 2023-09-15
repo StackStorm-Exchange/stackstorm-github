@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.5
+
+* Fix default for token_user parameter in get_user action so that empty parameter has expected behavior.
+
 ## 2.1.4
 
 * Bug fix (#41) that `github.get_contents` action would be failed when decode parameter is set,
